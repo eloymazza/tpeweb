@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 product-shower ">  
+            <div class="col-md-12 product-shower ">
             {foreach from=$products item=product}
             <div class="product-box m-3 p-2 ">
                 <h2>
@@ -22,12 +22,16 @@
                         <span>Descuento: {$product["descuento"]}%</span>
                     </div>
                 <div>
-                    {assign var="index" value=$product["id_categoria"]-1}
-                    <span>{$categories[$index]["nombre"]}</span>
+                  {assign var="productCategoryID" value=$product["id_categoria"]}
+                  {foreach from=$categories item=category}
+                      {if {$category['id_categoria'] == $productCategoryID}}
+                      <span>Categoria: {$category['nombre']}</span>
+                      {/if}
+                  {/foreach}
                 </div>
             </div>
-            {/foreach}    
-            </div>   
-        </div>         
+            {/foreach}
+            </div>
+        </div>
     </div>
 </div>

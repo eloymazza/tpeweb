@@ -9,28 +9,37 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-10 push-1 bg-white p-1 pb-4">
+            <div class="col-md-10 push-1 bg-white p-1 pb-4 borders">
               <div class="row">
                 <div class="col-md-12">
-                  <label for="">Categorias:</label>
+                  <h2>Categorias:</h2>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-10 push-1">
                   <div>
                     <button class="admin-button m-2">Agregar Categoria</button>
+                    <div class="row hide">
+                      {include file="addCategory.tpl"}
+                    </div>
                   </div>
                   <div>
-                    <button class="admin-button m-2">Modificar Categoria</button>
+                    <button class="admin-button m-2" >Modificar Categoria</button>
+                    <div class="row hide">
+                      {include file="modifyCategory.tpl"}
+                    </div>
                   </div>
                   <div>
-                    <button class="admin-button m-2">Eliminar Categoria</button>
+                    <button class="admin-button m-2 " >Eliminar Categoria</button>
+                    <div class="row hide">
+                      {include file="deleteCategory.tpl"}
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <label for="">Productos:</label>
+                  <h2>Productos:</h2>
                 </div>
               </div>
               <div class="row">
@@ -47,14 +56,14 @@
                 </div>
               </div>
             </div>
-          </div>                                              
+          </div>
           <div class="row">
             <div class="col-md-6 push-3">
-              <button class="admin-button  mt-4 mb-4">Salir</button>
+              <button class="admin-button  mt-4 mb-4 borders">Salir</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-</body>  
-</div> 
+    {include file="dependences.tpl"}
+</body>

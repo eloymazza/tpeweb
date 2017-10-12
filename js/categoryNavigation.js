@@ -2,11 +2,12 @@
 function activateButtonHanlers(){
     $(".js-category-buttons").on("click", function(){
         renderCategory(this.id,this.innerText);
+        buttonActiveEffects(this);
     });
     $(".js-offers-buttons").on("click", function(){
         renderOffers(this.id,this.innerText);
+        buttonActiveEffects(this);
     });
-    buttonActiveEffects(this);
 }
 
 function renderCategory(categoryId,nombreCategoria){

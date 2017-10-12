@@ -14,7 +14,7 @@
 .nav:hover {
     background-color:"red";
 }
-.category-button, .category-indicator, .admin-button{
+.category-button, .category-indicator, .admin-button, .confirm-button{
     text-align: center;
     background-color: #d9534f;
     width: 95%;
@@ -31,9 +31,9 @@
 }
 
 .active-button{
-    background-color: #d86b6b; 
+    background-color: #d86b6b;
 }
-.category-button:hover, .admin-button:hover{
+.category-button:hover, .admin-button:hover, .confirm-button:hover{
     cursor: pointer;
 }
 .product-shower{
@@ -58,11 +58,19 @@
     -webkit-text-stroke-color: black;
     -webkit-text-stroke-width: 1px;
     font-weight: bolder;
+    border:3px solid black;
 }
 
 .admin-button{
     border: 1px solid black;
     padding: 0.5em;
+}
+.borders{
+  border:3px solid black;
+}
+
+.confirm-button{
+  width: 50%;
 }
 
 .bg-white{

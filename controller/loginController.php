@@ -1,6 +1,6 @@
 <?php
 include_once('view/LoginView.php');
-include_once('controller/Controller.php');
+include_once('controller/controller.php');
 include_once('model/loginModel.php');
 
 class LoginController extends Controller
@@ -11,16 +11,16 @@ class LoginController extends Controller
         $this->loginView = new LoginView();
         $this->loginModel = new LoginModel();
     }
-  
+
     public function loginPanel(){
         $this->loginView->showLogin();
     }
-  
+
   public function verifyUser()
   {
       $userName = $_POST['nombre'];
       $password = $_POST['password'];
-       
+
       if(!empty($userName) && !empty($password)){
         $user = $this->loginModel->getUser($userName);
         if((!empty($user)) && password_verify($password, $user[0]['password'])) {

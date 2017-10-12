@@ -7,7 +7,7 @@
                     Todos
                 </button>
             </div>
-        </div>       
+        </div>
         {foreach from=$categories item=category}
         <div class="row">
             <div class="col-md-12 mb-1">
@@ -16,7 +16,7 @@
                 </button>
             </div>
         </div>
-        {/foreach}    
+        {/foreach}
     </div>
     <div class="col-md-9 js-catalogue">
         {include file="filteredProducts.tpl"}

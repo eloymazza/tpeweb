@@ -11,7 +11,7 @@ class ConfigApp
       'catalogue'=> 'IndexController#catalogue',
       'offers'=> 'IndexController#offers',
       'aboutUs'=> 'IndexController#aboutUs',
-      
+
       'allProducts' => 'ProductController#getAllProducts',
       'categoryFilter' => 'ProductController#getProductsByCategory',
 
@@ -21,7 +21,10 @@ class ConfigApp
       'login' => 'LoginController#loginPanel',
       'verifyUser' => 'LoginController#verifyUser',
 
-      'adminPanel' => 'AdminController#adminPanel'
+      'adminPanel' => 'AdminController#adminPanel',
+      'addCategory' => "AdminController#addCategory",
+      'modifyCategory' => "AdminController#updateCategory",
+      'deleteCategory' => "AdminController#deleteCategory"
     ];
 
 }
