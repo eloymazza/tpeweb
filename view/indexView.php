@@ -22,7 +22,7 @@ class IndexView extends View
         $this->smarty->assign("categoryName",$categoryName);
         $this->smarty->display('catalogue.tpl');
     }
-    
+
 
     function offers($categories, $products, $categoryName){
         $this->smarty->assign("categories", $categories);
@@ -35,7 +35,11 @@ class IndexView extends View
         $this->smarty->display('aboutUs.tpl');
     }
 
-    
+    function setup(){
+      $this->smarty->display('setupForm.tpl');
+    }
+
+
 }
 
 ?>

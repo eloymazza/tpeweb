@@ -7,7 +7,14 @@ class Controller
     protected $baseURL;
 
     function __construct(){
-        
+      $this->setup = new SetupController();
+      $indexView = new IndexView();
+      if(!$this->setup->setupOk()){
+        $indexView->setup();
+        die;
+      }else{
+        include_once 'dbconfig.php';
+      }
     }
 
     public function goToEndPoint($endpoint = ""){
