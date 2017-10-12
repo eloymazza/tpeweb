@@ -7,8 +7,9 @@ class AdminView extends View
     function __construct() {
         parent::__construct();
     }
-    function showAdminPanel($categories){
+    function showAdminPanel($categories, $products){
         $this->smarty->assign("categories", $categories);
+        $this->smarty->assign("products", $products);
         $this->smarty->display("adminPanel.tpl");
     }
 

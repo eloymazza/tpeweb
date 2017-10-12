@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-10-12 08:32:14
+/* Smarty version 3.1.30, created on 2017-10-12 16:27:56
   from "C:\xampp\htdocs\Proyectos\TPERWK\templates\filteredProducts.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_59df0c6e5918b9_28419896',
+  'unifunc' => 'content_59df7becb891c1_67139028',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6559e7783f5024c7094bbf5d06531e7bbfbb1ac7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Proyectos\\TPERWK\\templates\\filteredProducts.tpl',
-      1 => 1507789931,
+      1 => 1507789950,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_59df0c6e5918b9_28419896 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59df7becb891c1_67139028 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="row">
     <div class="col-md-12 ml-3 mb-2  product-shower-separator ">
@@ -67,7 +67,6 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['category']->value) {
 ?>
-      
                         <?php ob_start();
 echo $_smarty_tpl->tpl_vars['category']->value['id_categoria'] == $_smarty_tpl->tpl_vars['productCategoryID']->value;
 $_prefixVariable2=ob_get_clean();

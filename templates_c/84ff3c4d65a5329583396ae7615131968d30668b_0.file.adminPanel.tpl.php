@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-10-12 07:58:30
+/* Smarty version 3.1.30, created on 2017-10-12 17:39:47
   from "C:\xampp\htdocs\Proyectos\TPERWK\templates\adminPanel.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_59df0486d5bbe1_41726786',
+  'unifunc' => 'content_59df8cc3500a90_94078075',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '84ff3c4d65a5329583396ae7615131968d30668b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Proyectos\\TPERWK\\templates\\adminPanel.tpl',
-      1 => 1507787880,
+      1 => 1507822765,
       2 => 'file',
     ),
   ),
@@ -22,10 +22,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:addCategory.tpl' => 1,
     'file:modifyCategory.tpl' => 1,
     'file:deleteCategory.tpl' => 1,
+    'file:addProduct.tpl' => 1,
+    'file:modifyProduct.tpl' => 1,
+    'file:deleteProduct.tpl' => 1,
     'file:dependences.tpl' => 1,
   ),
 ),false)) {
-function content_59df0486d5bbe1_41726786 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59df8cc3500a90_94078075 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:head.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -82,12 +85,27 @@ $_smarty_tpl->_subTemplateRender("file:head.tpl", $_smarty_tpl->cache_id, $_smar
                 <div class="col-md-10 push-1">
                   <div>
                     <button class="admin-button m-2">Agregar Productos</button>
+                    <div class="row hide">
+                      <?php $_smarty_tpl->_subTemplateRender("file:addProduct.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+                    </div>
                   </div>
                   <div>
                     <button class="admin-button m-2">Modificar Productos</button>
+                    <div class="row hide">
+                      <?php $_smarty_tpl->_subTemplateRender("file:modifyProduct.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+                    </div>
                   </div>
                   <div>
                     <button class="admin-button m-2">Eliminar Productos</button>
+                    <div class="row hide">
+                      <?php $_smarty_tpl->_subTemplateRender("file:deleteProduct.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+                    </div>
                   </div>
                 </div>
               </div>
@@ -95,7 +113,7 @@ $_smarty_tpl->_subTemplateRender("file:head.tpl", $_smarty_tpl->cache_id, $_smar
           </div>
           <div class="row">
             <div class="col-md-6 push-3">
-              <button class="admin-button  mt-4 mb-4 borders">Salir</button>
+              <a href="out"><button class="admin-button  mt-4 mb-4 borders">Salir</button></a>
             </div>
           </div>
         </div>

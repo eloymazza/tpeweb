@@ -46,12 +46,21 @@
                 <div class="col-md-10 push-1">
                   <div>
                     <button class="admin-button m-2">Agregar Productos</button>
+                    <div class="row hide">
+                      {include file="addProduct.tpl"}
+                    </div>
                   </div>
                   <div>
                     <button class="admin-button m-2">Modificar Productos</button>
+                    <div class="row hide">
+                      {include file="modifyProduct.tpl"}
+                    </div>
                   </div>
                   <div>
                     <button class="admin-button m-2">Eliminar Productos</button>
+                    <div class="row hide">
+                      {include file="deleteProduct.tpl"}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -59,7 +68,7 @@
           </div>
           <div class="row">
             <div class="col-md-6 push-3">
-              <button class="admin-button  mt-4 mb-4 borders">Salir</button>
+              <a href="out"><button class="admin-button  mt-4 mb-4 borders">Salir</button></a>
             </div>
           </div>
         </div>

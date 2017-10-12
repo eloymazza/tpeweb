@@ -17,7 +17,8 @@ class AdminController extends Controller
 
     public function adminPanel(){
         $categories = $this->categoriesModel->getCategories();
-        $this->adminView->showAdminPanel($categories);
+        $products = $this->productModel->getProducts();
+        $this->adminView->showAdminPanel($categories, $products);
     }
 
     public function addCategory(){
@@ -35,6 +36,37 @@ class AdminController extends Controller
       $this->productModel->updateProductsCategory($idCategoria);
       $this->categoriesModel->deleteCategory($idCategoria);
       $this->adminPanel();
+    }
+
+    public function addProduct(){
+      $name = $_POST["nombre"];
+      $description = $_POST["descripcion"];
+      $price = $_POST["precio"];
+      $category = $_POST["categoria"];
+      $discount = $_POST["descuento"];
+      $this->productModel->addProduct($name,$description, $price, $category, $discount);
+      $this->adminPanel();
+    }
+
+    public function deleteProduct(){
+      $idProduct = $_POST['id_producto'];
+      $this->productModel->deleteProduct($idProduct);
+      $this->adminPanel();
+    }
+
+    public function updateProduct(){
+      $productID = $_POST["id_producto"];
+      $name = $_POST["nombre"];
+      $description = $_POST["descripcion"];
+      $price = $_POST["precio"];
+      $category = $_POST["categoria"];
+      $discount = $_POST["descuento"];
+      $this->productModel->updateProduct($name,$description, $price, $category, $discount,$productID);
+      $this->adminPanel();
+    }
+
+    public function goOut(){
+      $this->goToEndPoint();
     }
 
   /*
