@@ -19,7 +19,9 @@ class ConfigApp
       'offersFilter' => 'OffersController#getOffersByCategory',
 
       'login' => 'LoginController#loginPanel',
-      'verifyUser' => 'LoginController#verifyUser'
+      'verifyUser' => 'LoginController#verifyUser',
+
+      'adminPanel' => 'AdminController#adminPanel'
     ];
 
 }

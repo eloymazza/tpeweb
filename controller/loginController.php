@@ -7,6 +7,7 @@ class LoginController extends Controller
 {
     function __construct()
     {
+        parent::__construct();
         $this->loginView = new LoginView();
         $this->loginModel = new LoginModel();
     }
@@ -29,7 +30,6 @@ class LoginController extends Controller
             $this->goToEndPoint("adminPanel");
         }
         else{
-            echo "no entro";
             $this->loginView->showLogin("Error, Usuario o Contraseña Incorrectos");
         }
       }

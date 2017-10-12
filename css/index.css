@@ -14,7 +14,7 @@
 .nav:hover {
     background-color:"red";
 }
-.category-button, .category-indicator{
+.category-button, .category-indicator, .admin-button{
     text-align: center;
     background-color: #d9534f;
     width: 95%;
@@ -33,7 +33,7 @@
 .active-button{
     background-color: #d86b6b; 
 }
-.category-button:hover{
+.category-button:hover, .admin-button:hover{
     cursor: pointer;
 }
 .product-shower{
@@ -50,6 +50,25 @@
     width: 30%;
     max-height: 200px;
 }
+.admin-panel{
+    text-align: center;
+    background-color: #d9534f;
+    color:white;
+    font-size: 21px;
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 1px;
+    font-weight: bolder;
+}
+
+.admin-button{
+    border: 1px solid black;
+    padding: 0.5em;
+}
+
+.bg-white{
+    background-color: white;
+}
+
 @media (max-width: 1000px) {
     .category-button{
         font-size: 18px;
