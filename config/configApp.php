@@ -25,12 +25,11 @@ class ConfigApp
       'addCategory' => "AdminController#addCategory",
       'modifyCategory' => "AdminController#updateCategory",
       'deleteCategory' => "AdminController#deleteCategory",
-      'out' => "AdminController#goOut",
+      'out' => "LoginController#destroy",
 
       'addProduct' => "AdminController#addProduct",
       'modifyProduct' => "AdminController#updateProduct",
-      'deleteProduct' => "AdminController#deleteProduct",
-
+      'deleteProduct' => "AdminController#deleteProduct"
     ];
 
 }

@@ -34,13 +34,12 @@ class LoginController extends Controller
         }
       }
   }
-  /*
+
   public function destroy()
   {
     session_start();
     session_destroy();
-    header('Location: '.LOGIN);
+    $this->goToEndPoint();
   }
-  */
 }
  ?>

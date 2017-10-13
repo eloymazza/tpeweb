@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-10-2017 a las 02:20:43
+-- Tiempo de generación: 13-10-2017 a las 02:39:28
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.23
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `db_test`
+-- Base de datos: `db_nueva`
 --
 
 -- --------------------------------------------------------
@@ -38,7 +38,7 @@ CREATE TABLE `categoria` (
 INSERT INTO `categoria` (`id_categoria`, `nombre`) VALUES
 (1, 'Alimentos'),
 (2, 'Bebidas'),
-(3, 'Limpieza');
+(3, 'Limpiezza');
 
 -- --------------------------------------------------------
 
@@ -129,16 +129,6 @@ ALTER TABLE `producto`
 --
 ALTER TABLE `usuario`
   MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `producto`
---
-ALTER TABLE `producto`
-  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`);
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

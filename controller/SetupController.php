@@ -2,17 +2,18 @@
 include_once('controller/controller.php');
 include_once('model/SetupModel.php');
 include_once('view/SetupView.php');
-/**
- *
- */
+
+
 class SetupController extends Controller
 {
   protected $configFile = "dbconfig.php";
+
   function __construct()
   {
     $this->view = new SetupView();
     $this->model = new SetupModel();
   }
+
   function showSetup(){
     if($this->setupOk()){
       echo 'El sistema ya esta instalado.';
@@ -20,9 +21,11 @@ class SetupController extends Controller
     }
     $this->view->setupForm();
   }
+
   function setupOk(){
     return file_exists($this->configFile);
   }
+
   function runSetup(){
     if (isset($_POST['host']) && $_POST['host'] != '' &&
         isset($_POST['database']) && $_POST['database'] != '' &&
@@ -37,7 +40,7 @@ class SetupController extends Controller
       }
       fwrite($file, "
       <?php
-      
+
 define('DB_HOST', '".$_POST['host']."');
 define('DB_DATABASE', '".$_POST['database']."');
 define('DB_USERNAME', '".$_POST['username']."');
