@@ -1,4 +1,4 @@
-{include file="head.tpl"}
+{include file="common_elements/head.tpl"}
 <body>
     <div class="container">
       <div class="row">
@@ -20,19 +20,19 @@
                   <div>
                     <button class="admin-button m-2">Agregar Categoria</button>
                     <div class="row hide">
-                      {include file="addCategory.tpl"}
+                      {include file="admin_panel/addCategory.tpl"}
                     </div>
                   </div>
                   <div>
                     <button class="admin-button m-2" >Modificar Categoria</button>
                     <div class="row hide">
-                      {include file="modifyCategory.tpl"}
+                      {include file="admin_panel/modifyCategory.tpl"}
                     </div>
                   </div>
                   <div>
                     <button class="admin-button m-2 " >Eliminar Categoria</button>
                     <div class="row hide">
-                      {include file="deleteCategory.tpl"}
+                      {include file="admin_panel/deleteCategory.tpl"}
                     </div>
                   </div>
                 </div>
@@ -47,19 +47,19 @@
                   <div>
                     <button class="admin-button m-2">Agregar Productos</button>
                     <div class="row hide">
-                      {include file="addProduct.tpl"}
+                      {include file="admin_panel/addProduct.tpl"}
                     </div>
                   </div>
                   <div>
                     <button class="admin-button m-2">Modificar Productos</button>
                     <div class="row hide">
-                      {include file="modifyProduct.tpl"}
+                      {include file="admin_panel/modifyProduct.tpl"}
                     </div>
                   </div>
                   <div>
                     <button class="admin-button m-2">Eliminar Productos</button>
                     <div class="row hide">
-                      {include file="deleteProduct.tpl"}
+                      {include file="admin_panel/deleteProduct.tpl"}
                     </div>
                   </div>
                 </div>
@@ -68,7 +68,7 @@
           </div>
           <div class="row">
             <div class="col-md-6 push-3">
-              <a href="out"><button class="admin-button  mt-4 mb-4 borders">Salir</button></a>
+              <a href="index"><button class="admin-button  mt-4 mb-4 borders">Volver</button></a>
             </div>
           </div>
         </div>

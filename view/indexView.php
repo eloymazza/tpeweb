@@ -8,19 +8,20 @@ class IndexView extends View
         parent::__construct();
     }
 
-    function index(){
+    function index($userName){
+        $this->smarty->assign('userName',$userName);
         $this->smarty->display('index.tpl');
     }
 
     function home(){
-        $this->smarty->display('home.tpl');
+        $this->smarty->display('nav_sections/home.tpl');
     }
 
     function catalogue($categories, $products, $categoryName){
         $this->smarty->assign("categories", $categories);
         $this->smarty->assign("products", $products);
         $this->smarty->assign("categoryName",$categoryName);
-        $this->smarty->display('catalogue.tpl');
+        $this->smarty->display('nav_sections/catalogue.tpl');
     }
 
 
@@ -28,15 +29,15 @@ class IndexView extends View
         $this->smarty->assign("categories", $categories);
         $this->smarty->assign("products", $products);
         $this->smarty->assign("categoryName",$categoryName);
-        $this->smarty->display('offers.tpl');
+        $this->smarty->display('nav_sections/offers.tpl');
     }
 
     function aboutUs(){
-        $this->smarty->display('aboutUs.tpl');
+        $this->smarty->display('nav_sections/aboutUs.tpl');
     }
 
     function setup(){
-      $this->smarty->display('setupForm.tpl');
+      $this->smarty->display('nav_sections/setupForm.tpl');
     }
 
 

@@ -1,27 +1,3 @@
-<?php
-/* Smarty version 3.1.30, created on 2017-10-12 21:21:33
-  from "/Applications/XAMPP/xamppfiles/htdocs/trabajoEspecial/merge/tpeweb/templates/footer.tpl" */
-
-/* @var Smarty_Internal_Template $_smarty_tpl */
-if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '3.1.30',
-  'unifunc' => 'content_59dfc0bd6b0137_56107753',
-  'has_nocache_code' => false,
-  'file_dependency' => 
-  array (
-    '876296356d4db2ed2718e89d5587d4841bfe2b9e' => 
-    array (
-      0 => '/Applications/XAMPP/xamppfiles/htdocs/trabajoEspecial/merge/tpeweb/templates/footer.tpl',
-      1 => 1507835679,
-      2 => 'file',
-    ),
-  ),
-  'includes' => 
-  array (
-  ),
-),false)) {
-function content_59dfc0bd6b0137_56107753 (Smarty_Internal_Template $_smarty_tpl) {
-?>
 
 <!--footer-->
 <footer class="footer1">
@@ -29,21 +5,21 @@ function content_59dfc0bd6b0137_56107753 (Smarty_Internal_Template $_smarty_tpl)
 <div class = "container">
 <div class="row"><!-- row -->
 
-                <div class="col-lg-3 col-md-3"><!-- widgets column left -->
-                <ul class="list-unstyled clear-margins"><!-- widgets -->
+				<div class="col-lg-3 col-md-3"><!-- widgets column left -->
+				<ul class="list-unstyled clear-margins"><!-- widgets -->
 
-                        	<li class="widget-container widget_nav_menu"><!-- widgets list -->
+							<li class="widget-container widget_nav_menu"><!-- widgets list -->
 
-                                <h1 class="title-widget">Productos</h1>
+									<h1 class="title-widget">Productos</h1>
 
-                                <ul>
-                                	<li><a  href="#"><i class="fa fa-angle-double-right"></i> Tecnologia</a></li>
-                                    <li><a  href="#"><i class="fa fa-angle-double-right"></i> Almacen</a></li>
-                                </ul>
+									<ul>
+									<li><a  href="#"><i class="fa fa-angle-double-right"></i> Tecnologia</a></li>
+										<li><a  href="#"><i class="fa fa-angle-double-right"></i> Almacen</a></li>
+									</ul>
 
-							</li>
+					</li>
 
-                        </ul>
+						</ul>
 
 
                 </div><!-- widgets column left end -->
@@ -158,15 +134,8 @@ function content_59dfc0bd6b0137_56107753 (Smarty_Internal_Template $_smarty_tpl)
 				<div class="design">
 
 					 <a href="#">Mariana Mezzanotte </a> |  <a target="_blank" href="http://www.webenlance.com">Eloy Mazza</a>
-
 				</div>
-
 			</div>
-
 		</div>
-
 	</div>
-
 </div>
-<?php }
-}

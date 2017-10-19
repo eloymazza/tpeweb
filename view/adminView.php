@@ -10,7 +10,7 @@ class AdminView extends View
     function showAdminPanel($categories, $products){
         $this->smarty->assign("categories", $categories);
         $this->smarty->assign("products", $products);
-        $this->smarty->display("adminPanel.tpl");
+        $this->smarty->display("admin_panel/adminPanel.tpl");
     }
 
 

@@ -25,7 +25,7 @@ class LoginController extends Controller
         $user = $this->loginModel->getUser($userName);
         if((!empty($user)) && password_verify($password, $user[0]['password'])) {
             session_start();
-            $_SESSION['USER'] = $userName;
+            $_SESSION['userName'] = $userName;
             $_SESSION['LAST_ACTIVITY'] = time();
             $this->goToEndPoint("adminPanel");
         }
@@ -35,11 +35,11 @@ class LoginController extends Controller
       }
   }
 
-  public function destroy()
+  public function logout()
   {
     session_start();
     session_destroy();
-    $this->goToEndPoint();
+    $this->goToEndPoint("index");
   }
 }
  ?>

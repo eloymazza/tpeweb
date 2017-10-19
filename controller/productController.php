@@ -29,13 +29,32 @@
             $this->view->productsByCategory($products, $categoryInfo[1],$categories);
         }
 
-        public function offers(){
-            $this->productModel->offers();
-        }  
-        
-        public function aboutUs(){
-            $this->productModel->aboutUs();
-        }
+        public function addProduct(){
+            $name = $_POST["nombre"];
+            $description = $_POST["descripcion"];
+            $price = $_POST["precio"];
+            $category = $_POST["categoria"];
+            $discount = $_POST["descuento"];
+            $this->productModel->addProduct($name,$description, $price, $category, $discount);
+            $this->goToEndPoint("adminPanel");
+          }
+      
+          public function deleteProduct(){
+            $idProduct = $_POST['id_producto'];
+            $this->productModel->deleteProduct($idProduct);
+            $this->goToEndPoint("adminPanel");
+          }
+      
+          public function updateProduct(){
+            $productID = $_POST["id_producto"];
+            $name = $_POST["nombre"];
+            $description = $_POST["descripcion"];
+            $price = $_POST["precio"];
+            $category = $_POST["categoria"];
+            $discount = $_POST["descuento"];
+            $this->productModel->updateProduct($name,$description, $price, $category, $discount,$productID);
+            $this->goToEndPoint("adminPanel");
+          }
     }
 
 

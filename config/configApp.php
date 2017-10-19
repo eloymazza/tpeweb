@@ -20,16 +20,17 @@ class ConfigApp
 
       'login' => 'LoginController#loginPanel',
       'verifyUser' => 'LoginController#verifyUser',
+      'logout' => 'LoginController#logout',
 
       'adminPanel' => 'AdminController#adminPanel',
-      'addCategory' => "AdminController#addCategory",
-      'modifyCategory' => "AdminController#updateCategory",
-      'deleteCategory' => "AdminController#deleteCategory",
-      'out' => "LoginController#destroy",
 
-      'addProduct' => "AdminController#addProduct",
-      'modifyProduct' => "AdminController#updateProduct",
-      'deleteProduct' => "AdminController#deleteProduct"
+      'addCategory' => "categoryController#addCategory",
+      'modifyCategory' => "categoryController#updateCategory",
+      'deleteCategory' => "categoryController#deleteCategory",
+
+      'addProduct' => "productController#addProduct",
+      'modifyProduct' => "productController#updateProduct",
+      'deleteProduct' => "productController#deleteProduct"
     ];
 
 }

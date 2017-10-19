@@ -20,7 +20,10 @@
         public function index()
         {
           if($this->setup->setupOk()){
-            $this->view->index();
+            session_start();
+            $userName = isset($_SESSION["userName"]) ? $_SESSION["userName"] : " ";
+            //Reformar para que pida user Type
+            $this->view->index($userName);
           }
         }
 

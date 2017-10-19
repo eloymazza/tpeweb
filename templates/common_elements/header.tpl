@@ -1,27 +1,3 @@
-<?php
-/* Smarty version 3.1.30, created on 2017-10-12 23:56:37
-  from "C:\xampp\htdocs\Proyectos\TPERWK\templates\header.tpl" */
-
-/* @var Smarty_Internal_Template $_smarty_tpl */
-if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '3.1.30',
-  'unifunc' => 'content_59dfe515bbf949_98507957',
-  'has_nocache_code' => false,
-  'file_dependency' => 
-  array (
-    '915a5695a8f1345891bac4f11ae9f493f63bb9f6' => 
-    array (
-      0 => 'C:\\xampp\\htdocs\\Proyectos\\TPERWK\\templates\\header.tpl',
-      1 => 1507845350,
-      2 => 'file',
-    ),
-  ),
-  'includes' => 
-  array (
-  ),
-),false)) {
-function content_59dfe515bbf949_98507957 (Smarty_Internal_Template $_smarty_tpl) {
-?>
 <header>
     <div class="container-fluid p-4 mb-2 bg-danger">
       <div class="row">
@@ -31,11 +7,14 @@ function content_59dfe515bbf949_98507957 (Smarty_Internal_Template $_smarty_tpl)
           <div class="col-md-6">
             <img class="img-fluid" src="http://coucoujolie.com/wp-content/uploads/2016/01/Fruit-banner-800x208.png" alt="">
           </div>
-          <div class="col-md-1 push-2">
-              <a class="btn btn-secondary" href="login">Login</a>
+          <div class="col-md-2 push-1">     
+            {if $userName == "admin"}
+                <a class="btn btn-secondary" href="logout">Logout</a>    
+                <a class="btn btn-secondary" href="adminPanel">Admin Panel</a>    
+            {else}       
+                <a class="btn btn-secondary" href="login">Login</a>            
+            {/if}           
           </div>
       </div>
     </div>
 </header>
-<?php }
-}

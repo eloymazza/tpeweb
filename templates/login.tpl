@@ -25,6 +25,7 @@
                 <div class="alert alert-danger" role="alert">{$error}</div>
               {/if}
               <button type="submit" class="btn btn-default">Login</button>
+              <a href="index" class="btn btn-default">Go Back</a>
             </form>
           </div>
         </div> 
