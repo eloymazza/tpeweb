@@ -1,4 +1,4 @@
-{include file="head.tpl"}
+{include file="common_elements/head.tpl"}
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">

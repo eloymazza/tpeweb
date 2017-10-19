@@ -37,7 +37,7 @@ class IndexView extends View
     }
 
     function setup(){
-      $this->smarty->display('nav_sections/setupForm.tpl');
+      $this->smarty->display('setupForm.tpl');
     }
 
 
