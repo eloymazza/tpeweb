@@ -1,8 +1,6 @@
 <?php
-include_once('controller/controller.php');
 include_once('model/SetupModel.php');
 include_once('view/SetupView.php');
-
 
 class SetupController extends Controller
 {

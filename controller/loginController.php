@@ -1,6 +1,5 @@
 <?php
 include_once('view/LoginView.php');
-include_once('controller/controller.php');
 include_once('model/loginModel.php');
 
 class LoginController extends Controller

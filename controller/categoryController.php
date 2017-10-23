@@ -1,18 +1,17 @@
 <?php
 
-include_once("controller/controller.php");  
 include_once("controller/adminController.php");
 include_once("model/categoriesModel.php");
 include_once("model/productModel.php");
 
-class CategoryController extends Controller 
+class CategoryController extends Controller
 {
 
     function __construct(){
         parent::__construct();
         $this->categoriesModel = new CategoriesModel();
         $this->productModel = new ProductModel();
-    }   
+    }
 
     public function addCategory(){
         $this->categoriesModel->addCategory($_POST["nombre"]);

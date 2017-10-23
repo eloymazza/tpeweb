@@ -1,7 +1,6 @@
 <?php
 
     include_once("view/indexView.php");
-    include_once("controller/controller.php");
     include_once("model/productModel.php");
     include_once('controller/SetupController.php');
 

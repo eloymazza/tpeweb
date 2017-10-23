@@ -1,7 +1,5 @@
 <?php
 
-include_once 'model/model.php';
-
 class ProductModel extends Model
 {
 
@@ -9,6 +7,12 @@ class ProductModel extends Model
         $sentencia = $this->db->prepare( "select * from producto");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getProduct($idProduct){
+      $sentencia = $this->db->prepare( "select * from producto where id_producto = ?");
+      $sentencia->execute([$id_tarea]);
+      return $sentencia->fetch(PDO::FETCH_ASSOC);
     }
 
     function getProductsByCategory($categoryID){
@@ -22,9 +26,11 @@ class ProductModel extends Model
       $sentencia->execute([$categoryID]);
     }
 
-    function addProduct($name, $description,$price, $category, $discount){
+    function saveProduct($name, $description,$price, $category, $discount){
       $sentencia = $this->db->prepare('INSERT INTO producto(nombre,descripcion,precio,id_categoria,descuento) VALUES(?,?,?,?,?)');
       $sentencia->execute([$name,$description, $price, $category, $discount]);
+      $id = $this->db->lastInsertId();
+      return $this->getProduct($id);
     }
 
     function deleteProduct($idProduct){
@@ -32,10 +38,10 @@ class ProductModel extends Model
       $sentencia->execute([$idProduct]);
     }
 
-    function updateProduct($name,$description,$price, $category, $discount,$poduct_id){
-      echo $name;
-        $sentencia = $this->db->prepare("UPDATE producto SET nombre='$name', descripcion='$description', precio='$price',descuento='$discount', id_categoria='$category' WHERE id_producto=?");
-      $sentencia->execute([$poduct_id]);
+    function updateProduct($name,$description,$price, $discount, $category, $poduct_id){
+      $sentencia = $this->db->prepare("UPDATE producto SET nombre=?, descripcion=?, precio=? ,descuento=?, id_categoria=? WHERE id_producto=?");
+      $sentencia->execute([$nombre, $descripcion, $precio, $descuento, $id_categoria, $poduct_id]);
+      return $this->getProduct($poduct_id);
     }
 }
 

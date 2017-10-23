@@ -1,7 +1,5 @@
 <?php
 
-include_once("model/model.php");
-
 class LoginModel extends Model
 {
   function getUser($userName){

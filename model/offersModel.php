@@ -1,8 +1,6 @@
 <?php
 
-include_once 'model/model.php';
-
-class OffersModel extends Model 
+class OffersModel extends Model
 {
 
     function getOffers(){
@@ -16,6 +14,5 @@ class OffersModel extends Model
         $sentencia->execute([$idCategoria]);
         return $sentencia->fetchAll(PDO::FETCH_ASSOC);
     }
-   
-}
 
+}
