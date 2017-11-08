@@ -1,4 +1,4 @@
-{include file="head.tpl"}
+{include file="common_elements/head.tpl"}
 <body>
   <header>
     <div class="container">

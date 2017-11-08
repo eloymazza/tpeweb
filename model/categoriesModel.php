@@ -1,7 +1,5 @@
 <?php
 
-include_once 'model/model.php';
-
 class CategoriesModel extends Model
 {
     function getCategories(){
@@ -10,9 +8,17 @@ class CategoriesModel extends Model
         return $sentencia->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    function getCategory($idCategory){
+        $sentencia = $this->db->prepare( "select * from categoria where id_categoria = ?");
+        $sentencia->execute([$idCategory]);
+        return $sentencia->fetch(PDO::FETCH_ASSOC);
+    }
+
     function addCategory($categoryName){
         $sentencia = $this->db->prepare('INSERT INTO categoria(nombre) VALUES(?)');
         $sentencia->execute([$categoryName]);
+        $id = $this->db->lastInsertId();
+        return $this->getCategory($id);
     }
 
     function updateCategory($newName, $categoryName){
@@ -24,6 +30,8 @@ class CategoriesModel extends Model
       $sentencia = $this->db->prepare('delete from categoria where id_categoria=?');
       $sentencia->execute([$idCategory]);
     }
+
+
 }
 
 

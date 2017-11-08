@@ -1,6 +1,5 @@
 <?php
 
-include_once 'model/model.php';
 
 class ProductModel extends Model
 {
@@ -9,6 +8,12 @@ class ProductModel extends Model
         $sentencia = $this->db->prepare( "select * from producto");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getProduct($idProduct){
+      $sentencia = $this->db->prepare( "select * from producto where id_producto = ?");
+      $sentencia->execute([$idProduct]);
+      return $sentencia->fetch(PDO::FETCH_ASSOC);
     }
 
     function getProductsByCategory($categoryID){
@@ -25,7 +30,11 @@ class ProductModel extends Model
     function addProduct($name, $description,$price, $category, $discount){
       $sentencia = $this->db->prepare('INSERT INTO producto(nombre,descripcion,precio,id_categoria,descuento) VALUES(?,?,?,?,?)');
       $sentencia->execute([$name,$description, $price, $category, $discount]);
+      $sentencia->execute([$name,$description, $price, $category, $discount]);
+      $id = $this->db->lastInsertId();
+      return $this->getProduct($id);
     }
+
 
     function deleteProduct($idProduct){
       $sentencia = $this->db->prepare('delete from producto where id_producto=?');

@@ -3,7 +3,6 @@
     include_once("view/indexView.php");
     include_once("view/productView.php");
     include_once("view/offersView.php");
-    include_once("controller/controller.php");
     include_once("model/categoriesModel.php");
     include_once("model/offersModel.php");
 

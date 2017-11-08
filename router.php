@@ -1,5 +1,6 @@
 <?php
-
+include_once("controller/controller.php");
+include_once('model/model.php');
 include_once("config/configApp.php");
 include_once("controller/indexController.php");
 include_once("controller/productController.php");
