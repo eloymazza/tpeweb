@@ -11,6 +11,7 @@
   }else{
     include_once ('../dbconfig.php');
   }
+
   include_once 'config/Router.php';
   include_once '../model/model.php';
   include_once 'controller/ProductsApiController.php';
@@ -19,9 +20,8 @@
   //url, verb, controller, method
   $router->AddRoute("products", "GET", "ProductsApiController", "getProducts");
   $router->AddRoute("products/:id", "GET", "ProductsApiController", "getProduct");
-  $router->AddRoute("productos/:id/descripcion", "GET", "ProductosApiController", "getDescripcion");
-  $router->AddRoute("productos/:id", "PUT", "ProductosApiController", "editProducto");
-  $router->AddRoute("productos", "POST", "ProductosApiController", "createProducto");
+  $router->AddRoute("products", "POST", "ProductsApiController", "createProduct");
+  $router->AddRoute("products/:id", "PUT", "ProductsApiController", "editProducto");
   $router->AddRoute("productos/:id", "DELETE", "ProductosApiController", "deleteProducto");
   $router->AddRoute("categorias", "GET", "CategoriasApiController", "getCategorias");
   $router->AddRoute("categorias/:id", "GET", "CategoriasApiController", "getCategoria");
@@ -39,4 +39,5 @@
     $url_params = $array[2];
     echo (new $controller())->$metodo($url_params);
   }
+
 ?>

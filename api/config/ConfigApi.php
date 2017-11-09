@@ -5,13 +5,13 @@ class ConfigApi
     public static $PARAMS = 'params';
     public static $RESOURCES = [
       'products#GET'=> 'ProductsApiController#getProducts',
-      'productos#DELETE'=> 'ProductsApiController#deleteProduct',
-      'productos#POST'=> 'ProductsApiController#createProduct',
-      'productos#PUT'=> 'ProductsApiController#editProduct',
-      'categorias#GET'=> 'CategoriesApiController#getCategories',
-      'categorias#DELETE'=> 'CategoriesApiController#deleteCategory',
-      'categorias#POST'=> 'CategoriesApiController#createCategory',
-      'categorias#PUT'=> 'CategoriesApiController#editCategory'
+      'products#DELETE'=> 'ProductsApiController#deleteProduct',
+      'products#POST'=> 'ProductsApiController#createProduct',
+      'products#PUT'=> 'ProductsApiController#editProduct',
+      'categories#GET'=> 'CategoriesApiController#getCategories',
+      'categories#DELETE'=> 'CategoriesApiController#deleteCategory',
+      'categories#POST'=> 'CategoriesApiController#createCategory',
+      'categories#PUT'=> 'CategoriesApiController#editCategory'
     ];
 }
 ?>
