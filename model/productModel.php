@@ -41,10 +41,10 @@ class ProductModel extends Model
       $sentencia->execute([$idProduct]);
     }
 
-    function updateProduct($name,$description,$price, $category, $discount,$poduct_id){
-      echo $name;
-        $sentencia = $this->db->prepare("UPDATE producto SET nombre='$name', descripcion='$description', precio='$price',descuento='$discount', id_categoria='$category' WHERE id_producto=?");
-      $sentencia->execute([$poduct_id]);
+    function updateProduct($name,$description,$price, $discount, $category,$product_id){
+      $sentencia = $this->db->prepare("UPDATE producto SET nombre=?, descripcion=?, precio=? ,descuento=?, id_categoria=? WHERE id_producto=?");
+      $sentencia->execute([$name,$description,$price, $discount, $category,$product_id]);
+      return $this->getProduct($product_id);
     }
 }
 

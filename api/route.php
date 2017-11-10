@@ -21,8 +21,8 @@
   $router->AddRoute("products", "GET", "ProductsApiController", "getProducts");
   $router->AddRoute("products/:id", "GET", "ProductsApiController", "getProduct");
   $router->AddRoute("products", "POST", "ProductsApiController", "createProduct");
-  $router->AddRoute("products/:id", "PUT", "ProductsApiController", "editProducto");
-  $router->AddRoute("productos/:id", "DELETE", "ProductosApiController", "deleteProducto");
+  $router->AddRoute("products/:id", "PUT", "ProductsApiController", "editProduct");
+  $router->AddRoute("products/:id", "DELETE", "ProductsApiController", "deleteProduct");
   $router->AddRoute("categorias", "GET", "CategoriasApiController", "getCategorias");
   $router->AddRoute("categorias/:id", "GET", "CategoriasApiController", "getCategoria");
   $router->AddRoute("categorias/:id", "PUT", "CategoriasApiController", "editCategoria");

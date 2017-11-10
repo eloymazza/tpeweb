@@ -77,8 +77,13 @@ class ProductsApiController extends Api
       $discount = $body->descuento;
       $category = $body->id_categoria;
       $product_id = $url_params[":id"];
-      $producto = $this->model->updateProduct($name, $description, $price, $discount, $category, $poduct_id);
-      return $this->json_response($producto, 200);
+      $producto = $this->model->updateProduct($name, $descripcion, $price, $discount, $category, $product_id);
+      if($producto){
+        return $this->json_response("Producto Editado Exitosamente", 200);
+      }
+      else{
+        return $this->json_response("Error, Producto No Encontrado", 404);
+      }
   }
 }
  ?>
