@@ -18,10 +18,10 @@
   include_once 'controller/CategoriesApiController.php';
   $router = new Router();
   //url, verb, controller, method
-  $router->AddRoute("products", "GET", "ProductsApiController", "getProducts");
-  $router->AddRoute("products/:id", "GET", "ProductsApiController", "getProduct");
-  $router->AddRoute("products", "POST", "ProductsApiController", "createProduct");
-  $router->AddRoute("products/:id", "PUT", "ProductsApiController", "editProducto");
+  $router->AddRoute("productos", "GET", "ProductsApiController", "getProducts");
+  $router->AddRoute("productos/:id", "GET", "ProductsApiController", "getProduct");
+  $router->AddRoute("productos", "POST", "ProductsApiController", "createProduct");
+  $router->AddRoute("productos/:id", "PUT", "ProductsApiController", "editProducto");
   $router->AddRoute("productos/:id", "DELETE", "ProductosApiController", "deleteProducto");
   $router->AddRoute("categorias", "GET", "CategoriasApiController", "getCategorias");
   $router->AddRoute("categorias/:id", "GET", "CategoriasApiController", "getCategoria");
