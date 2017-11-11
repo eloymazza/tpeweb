@@ -48,8 +48,11 @@ require_once('../model/categoriesModel.php');
         public function createCategory($url_params = []) {
             $body = json_decode($this->raw_data);
             $categoryName = $body->nombre;
-            $categoria = $this->model->addCategory($categoryName);
-            return $this->json_response($categoria, 200);
+            if(!$this->nameInUse($categoryName)){
+                $categoria = $this->model->addCategory($categoryName);
+                return $this->json_response($categoria, 200);
+            }
+            return $this->json_response("La cetegoria ya esta en uso", 400);
         }
 
 
@@ -57,9 +60,23 @@ require_once('../model/categoriesModel.php');
             $body = json_decode($this->raw_data);
             $newName = $body->nombre;
             $idCategory = $url_params[":id"];
+            if(!$this->nameInUse($newName)){
             $categoria = $this->model->updateCategory($newName, $idCategory);
             return $this->json_response($categoria, 200);
+            }
+            return $this->json_response("El nombre elegido ya existe", 400);
+        }
+
+        public function nameInUse($categoryName){
+            $category = $this->model->getCategoryByName($categoryName);
+            if($category == ''){
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     
     }
- ?>
+ ?> 

@@ -33,9 +33,10 @@
             $name = $_POST["nombre"];
             $description = $_POST["descripcion"];
             $price = $_POST["precio"];
-            $category = $_POST["categoria"];
             $discount = $_POST["descuento"];
-            $this->productModel->addProduct($name,$description, $price, $category, $discount);
+            $category = $_POST["categoria"];
+            echo $category;
+            $this->productModel->addProduct($name,$description, $price,$discount, $category);
             $this->goToEndPoint("adminPanel");
           }
       

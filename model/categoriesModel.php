@@ -14,6 +14,12 @@ class CategoriesModel extends Model
         return $sentencia->fetch(PDO::FETCH_ASSOC);
     }
 
+    function getCategoryByName($name){
+        $sentencia = $this->db->prepare("select * from categoria where nombre = ?");
+        $sentencia->execute([$name]);
+        return $sentencia->fetch(PDO::FETCH_ASSOC);
+    }
+
     function addCategory($categoryName){
         $sentencia = $this->db->prepare('INSERT INTO categoria(nombre) VALUES(?)');
         $sentencia->execute([$categoryName]);

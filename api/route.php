@@ -23,11 +23,11 @@
   $router->AddRoute("products", "POST", "ProductsApiController", "createProduct");
   $router->AddRoute("products/:id", "PUT", "ProductsApiController", "editProduct");
   $router->AddRoute("products/:id", "DELETE", "ProductsApiController", "deleteProduct");
-  $router->AddRoute("categorias", "GET", "CategoriasApiController", "getCategorias");
-  $router->AddRoute("categorias/:id", "GET", "CategoriasApiController", "getCategoria");
-  $router->AddRoute("categorias/:id", "PUT", "CategoriasApiController", "editCategoria");
-  $router->AddRoute("categorias", "POST", "CategoriasApiController", "createCategoria");
-  $router->AddRoute("categorias/:id", "DELETE", "CategoriasApiController", "deleteCategoria");
+  $router->AddRoute("categories", "GET", "CategoriesApiController", "getCategories");
+  $router->AddRoute("categories/:id", "GET", "CategoriesApiController", "getCategory");
+  $router->AddRoute("categories/:id", "PUT", "CategoriesApiController", "editCategory");
+  $router->AddRoute("categories", "POST", "CategoriesApiController", "createCategory");
+  $router->AddRoute("categories/:id", "DELETE", "CategoriesApiController", "deleteCategory");
   $route = $_GET['resource'];
   $array = $router->Route($route);
   if(sizeof($array) == 0)

@@ -27,10 +27,9 @@ class ProductModel extends Model
       $sentencia->execute([$categoryID]);
     }
 
-    function addProduct($name, $description,$price, $category, $discount){
-      $sentencia = $this->db->prepare('INSERT INTO producto(nombre,descripcion,precio,id_categoria,descuento) VALUES(?,?,?,?,?)');
-      $sentencia->execute([$name,$description, $price, $category, $discount]);
-      $sentencia->execute([$name,$description, $price, $category, $discount]);
+    function addProduct($name, $description,$price, $discount ,$category){
+      $sentencia = $this->db->prepare('INSERT INTO producto(nombre,descripcion,precio,descuento,id_categoria) VALUES(?,?,?,?,?)');
+      $sentencia->execute([$name,$description, $price, $discount, $category]);
       $id = $this->db->lastInsertId();
       return $this->getProduct($id);
     }

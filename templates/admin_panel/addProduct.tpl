@@ -6,7 +6,7 @@
       <label for="category-name">Precio:</label>
       <input type="text" class="form-control" id="category-name"  name='precio' placeholder="$$$">
       <div class="form-group">
-        <label>Producto:</label>
+        <label>Categoria:</label>
         <select name='categoria'>
           {foreach from=$categories item=category}
               <option value={$category['id_categoria']}>{$category['nombre']}</option>
