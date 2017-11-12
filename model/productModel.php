@@ -16,6 +16,13 @@ class ProductModel extends Model
       return $sentencia->fetch(PDO::FETCH_ASSOC);
     }
 
+    function getProductByName($productName){
+      $sentencia = $this->db->prepare( "select * from producto where nombre = ?");
+      $sentencia->execute([$productName]);
+      return $sentencia->fetch(PDO::FETCH_ASSOC);
+    }
+
+
     function getProductsByCategory($categoryID){
         $sentencia = $this->db->prepare( "select * from producto where id_categoria=?");
         $sentencia->execute([$categoryID]);
