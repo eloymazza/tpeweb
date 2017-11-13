@@ -19,7 +19,11 @@
                 <div class="col-md-10 push-1">
                   <div>
                     <button class="admin-button m-2">Agregar Categoria</button>
-                    <div class="row hide">
+                    {if isset($showAddCategory)}
+                      <div class="row">
+                    {else}
+                      <div class="row hide">
+                    {/if}
                       {include file="admin_panel/addCategory.tpl"}
                     </div>
                   </div>
