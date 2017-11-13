@@ -21,6 +21,8 @@ class ConfigApp
       'login' => 'LoginController#loginPanel',
       'verifyUser' => 'LoginController#verifyUser',
       'logout' => 'LoginController#logout',
+      'signup' => 'SignupController#signupPanel',
+
 
       'adminPanel' => 'AdminController#adminPanel',
 

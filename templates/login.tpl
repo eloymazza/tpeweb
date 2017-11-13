@@ -26,8 +26,9 @@
               {/if}
               <button type="submit" class="btn btn-default">Login</button>
               <a href="index" class="btn btn-default">Go Back</a>
+              <a href="signup" class="btn btn-default">Crear una Cuenta</a>
             </form>
           </div>
-        </div> 
-    </body>  
-</div> 
+        </div>
+    </body>
+</div>
