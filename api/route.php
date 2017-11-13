@@ -16,6 +16,7 @@
   include_once '../model/model.php';
   include_once 'controller/ProductsApiController.php';
   include_once 'controller/CategoriesApiController.php';
+  include_once 'controller/commentsApiController.php';
   $router = new Router();
   //url, verb, controller, method
   $router->AddRoute("products", "GET", "ProductsApiController", "getProducts");
@@ -28,6 +29,8 @@
   $router->AddRoute("categories/:id", "PUT", "CategoriesApiController", "editCategory");
   $router->AddRoute("categories", "POST", "CategoriesApiController", "createCategory");
   $router->AddRoute("categories/:id", "DELETE", "CategoriesApiController", "deleteCategory");
+  $router->AddRoute("comments/:id", "GET", "CommentsApiController", "getComments");
+  $router->AddRoute("comments/:id", "DELETE", "CommentsApiController", "deleteComments");
   $route = $_GET['resource'];
   $array = $router->Route($route);
   if(sizeof($array) == 0)

@@ -13,7 +13,7 @@
                     {$product["nombre"]}
                 </h2>
                 <div>
-                    <p>{$product["descripcion"]}</p>
+                    <span>{$product["descripcion"]}</span>
                 </div>
                 <div>
                     <span>Precio: {$product["precio"]}$</span>
@@ -30,6 +30,13 @@
                         <span>Categoria: {$category['nombre']}</span>
                         {/if}
                     {/foreach}
+                </div>
+                <div class="col-md-8 pl-0">
+                    <button class="comments-button js-comments-button" name="{$product['id_producto']}">Comentarios</button>
+                    <div class="row">
+                        <div class="col-md-8 pl-0" id="product_{$product['id_producto']}">
+                        </div>
+                    </div>
                 </div>
             </div>
             {/foreach}

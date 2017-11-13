@@ -1,7 +1,7 @@
 <?php
 require_once('Api.php');
 require_once('../model/productModel.php');
-
+require_once('commentsApiController.php');
 
 
 class ProductsApiController extends Api
@@ -50,12 +50,14 @@ class ProductsApiController extends Api
 
   public function deleteProduct($url_params = [])
   {
-      $id_producto = $url_params[":id"];
-      $producto = $this->model->getProduct($id_producto);
+      $product_id = $url_params[":id"];
+      $producto = $this->model->getProduct($product_id);
       if($producto)
       {
-        $this->model->deleteProduct($id_producto);
-        return $this->json_response("Borrado exitoso.", 200);
+        $this->model->deleteProduct($product_id);
+        $commentController = new CommentsApiController();
+        print_r($commentController->deleteComments($product_id));
+        return $this->json_response("Borrado exitoso", 200);
       }
       else
         return $this->json_response(false, 404);

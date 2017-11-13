@@ -1,0 +1,8 @@
+
+{{#commentsArray}}
+    {{comentario}}
+    <span class="delete-comment js-delete-comment" id="comentario_'{{id_comentario}}'">Borrar</span>
+{{/commentsArray}}
+{{#noComment}}
+    <span> Este producto no tiene Comentarios <span> 
+{{/noComment}} 

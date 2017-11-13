@@ -14,7 +14,7 @@
 .nav:hover {
     background-color:"red";
 }
-.category-button, .category-indicator, .admin-button, .confirm-button{
+.category-button, .category-indicator, .admin-button, .confirm-button,.comments-button{
     text-align: center;
     background-color: #d9534f;
     width: 95%;
@@ -30,12 +30,21 @@
     font-size: 24px;
 }
 
+.delete-comment{
+    color: #d9534f;
+}
+
 .active-button{
     background-color: #d86b6b;
 }
-.category-button:hover, .admin-button:hover, .confirm-button:hover{
+.category-button:hover, .admin-button:hover, .confirm-button:hover, .comments-button:hover, .delete-comment:hover{
     cursor: pointer;
 }
+
+.delete-comment:hover{
+    text-decoration: underline;
+}
+
 .product-shower{
     display: flex;
     justify-content: left;

@@ -40,6 +40,18 @@ INSERT INTO `categoria` (`id_categoria`, `nombre`) VALUES
 (2, 'Bebidas'),
 (3, 'Limpiezza');
 
+-- ---------------------------------------------------------- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentario`
+--
+
+CREATE TABLE `comentario` (
+  `id_comentario` int(255) NOT NULL,
+  `contenido` text NOT NULL,
+  `id_producto` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 -- --------------------------------------------------------
 
 --
