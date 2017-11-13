@@ -24,13 +24,25 @@
     }
 
 
-    function deleteComment(idComentario){
-        alert("borrar");
+    function deleteComment(comment){
+        let commentID = comment.title;
+        let productID = comment.id;
+        console.log(productID);
+        $.ajax({
+            url: 'api/comments/'+ commentID,
+            method: 'DELETE',
+            success: function() {
+                $("#"+productID).remove();
+            },
+            error: function(){
+                alert("error al borrar");
+            }
+        });
     }
  
 
     function activateCommentEvents(){
         $(".js-delete-comment").click(function(){
-            deleteComment(this.id);
+            deleteComment(this);
         });
     }

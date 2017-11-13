@@ -30,7 +30,8 @@
   $router->AddRoute("categories", "POST", "CategoriesApiController", "createCategory");
   $router->AddRoute("categories/:id", "DELETE", "CategoriesApiController", "deleteCategory");
   $router->AddRoute("comments/:id", "GET", "CommentsApiController", "getComments");
-  $router->AddRoute("comments/:id", "DELETE", "CommentsApiController", "deleteComments");
+  $router->AddRoute("comments/all/:id", "DELETE", "CommentsApiController", "deleteAllComments");
+  $router->AddRoute("comments/:id", "DELETE", "CommentsApiController", "deleteComment");
   $route = $_GET['resource'];
   $array = $router->Route($route);
   if(sizeof($array) == 0)

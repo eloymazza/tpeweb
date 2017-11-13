@@ -8,12 +8,15 @@
             return $sentencia->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        function deleteComments($id_product){
-            $id_product = $id_product[":id"];
+        function deleteAllComments($id_product){
             $sentencia = $this->db->prepare('delete from comentario where id_producto=?');
-            $sentencia->execute([$id_product]); 
+            $sentencia->execute([$id_product]);
         }
 
+        function deleteComment($id_comment){
+            $sentencia = $this->db->prepare('delete from comentario where id_comentario=?');
+            $sentencia->execute([$id_comment]);
+        }
     }
 
 ?>

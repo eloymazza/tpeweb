@@ -36,15 +36,22 @@ class CommentsApiController extends Api
     }
 
     
-    public function deleteComments($url_params){
+    public function deleteAllComments($url_params){
         $product_id = $url_params[":id"];
         if($this->model->getComments($product_id)){
-            $this->model->deleteComments($product_id);
+            $this->model->deleteAllComments($product_id);
             return $this->json_response("Comentarios Borrados Existosamente", 200);
         }
         else{
             return $this->json_response("Comentarios no encontrados", 404);
         }
+    }
+
+    //Mejorar
+    public function deleteComment($url_params){
+        $comment_id = $url_params[":id"];
+        $this->model->deleteComment($comment_id);
+        return $this->json_response("Comentario Borrados Existosamente", 200);
     }
     
     public function productExist($product_id){
