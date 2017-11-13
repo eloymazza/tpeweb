@@ -46,7 +46,11 @@
                 <div class="col-md-10 push-1">
                   <div>
                     <button class="admin-button m-2">Agregar Productos</button>
-                    <div class="row hide">
+                    {if isset($showAddProduct)}
+                      <div class="row">
+                    {else}
+                      <div class="row hide">
+                    {/if}
                       {include file="admin_panel/addProduct.tpl"}
                     </div>
                   </div>

@@ -13,7 +13,6 @@ class AdminView extends View
         $this->smarty->display("admin_panel/adminPanel.tpl");
     }
 
-
 }
 
 ?>
