@@ -13,7 +13,7 @@ function activateButtonHanlers(){
 
 function activateCommentButtons(){
     $(".js-comments-button").click(function(){
-        getComments(this);  
+        getComments(this.id.split("_")[1]);  
     });
 }
 

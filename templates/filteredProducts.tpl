@@ -32,9 +32,9 @@
                     {/foreach}
                 </div>
                 <div class="col-md-8 pl-0">
-                    <button class="comments-button js-comments-button" name="{$product['id_producto']}">Comentarios</button>
+                    <button class="comments-button js-comments-button" id="commentsButton_{$product['id_producto']}">Comentarios</button>
                     <div class="row">
-                        <div class="col-md-8 pl-0" id="product_{$product['id_producto']}">
+                        <div class="col-md-8 pl-0" id="commentsContainer_{$product['id_producto']}">
                         </div>
                     </div>
                 </div>

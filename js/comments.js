@@ -1,48 +1,70 @@
 
-    let commentsTemplate;
-    $.ajax({url: 'js/templates/comments.mst'}).done(template => commentsTemplate = template);
+let commentsTemplate;
+$.ajax({url: 'js/templates/comments.mst'}).done(template => commentsTemplate = template);
 
-    function getComments(product){
-        let productID = product.name;
-        $.get("api/comments/"+ productID, function(comments){
-            renderComments(comments,productID);
-        }).fail(function(result){
-            renderNoComments(productID);
-        });       
-    }
+function getComments(productID){
+    $.get("api/comments/"+ productID, function(comments){
+        renderComments(comments,productID);
+    }).fail(function(result){
+        renderNoComments(productID);
+    });       
+}
 
-    function renderComments(commentsArray,productID){
-        
-        let commentsRendered = Mustache.render(commentsTemplate, {'commentsArray':commentsArray});
-        $("#product_"+productID).html(commentsRendered);
-        activateCommentEvents();
-    }
+function postComment(data, productID){
+    console.log(productID);
+    $.ajax({
+        method: "POST",
+        url: "api/comments/"+productID,
+        data: JSON.stringify(data)
+     })
+     .done(function(response) {
+         console.log(response);
+        getComments(productID);
+    })
+    .fail(function(err) {
+        console.log("error" + err);
+    });
+}
 
-    function renderNoComments(productID){
-        let noCommentsRender = Mustache.render(commentsTemplate, {'noComment':true});
-        $("#product_"+productID).html(noCommentsRender);
-    }
+function deleteComment(comment){
+    let commentID = comment.id.split("_")[1];
+    let productID = comment.title.split("_")[1];
+    $.ajax({
+        url: 'api/comments/'+ commentID,
+        method: 'DELETE',
+        success: function() {
+            getComments(productID);
+        },
+        error: function(){
+            alert("error al borrar");
+        }
+    });
+}
+
+function renderComments(commentsArray,productID){
+    let commentsRendered = Mustache.render(commentsTemplate, {'commentsArray':commentsArray, "productID": productID});
+    $("#commentsContainer_"+productID).html(commentsRendered);
+    activateCommentEvents();
+}
 
 
-    function deleteComment(comment){
-        let commentID = comment.title;
-        let productID = comment.id;
-        console.log(productID);
-        $.ajax({
-            url: 'api/comments/'+ commentID,
-            method: 'DELETE',
-            success: function() {
-                $("#"+productID).remove();
-            },
-            error: function(){
-                alert("error al borrar");
-            }
-        });
-    }
- 
+function renderNoComments(productID){
+    let noCommentsRender = Mustache.render(commentsTemplate, {'noComment':true,'noCommentproductID': productID});
+    $("#commentsContainer_"+productID).html(noCommentsRender);
+    activateCommentEvents();
+}
 
-    function activateCommentEvents(){
-        $(".js-delete-comment").click(function(){
-            deleteComment(this);
-        });
-    }
+function activateCommentEvents(){
+    $(".js-delete-comment").click(function(){
+        deleteComment(this);
+    });
+    $(".js-newComment-form").on("submit",function(event){
+        event.preventDefault();
+        let data = {
+            comentario : $("#comment-content").val()
+        };
+        let productID = this.id.split("_")[1];
+        postComment(data, productID);
+    });
+    
+}

@@ -1,5 +1,6 @@
 $("document").ready(function(){
     renderSection("home");
+    
 });
 
 $(".sectionLink").on("click", function(e){

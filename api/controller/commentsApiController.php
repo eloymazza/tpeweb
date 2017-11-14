@@ -14,10 +14,12 @@ class CommentsApiController extends Api
         $this->productModel = new ProductModel();
     }
 
-    public function addComment(){
-
-        
-
+    public function createComment($url_params = []){
+        $body = json_decode($this->raw_data);
+        $comment = $body->comentario;
+        $product_id = $url_params[":id"];
+        $commentResponse = $this->model->addComment($comment, $product_id);
+        return $this->json_response($commentResponse, 200);
     }
 
 
@@ -47,15 +49,13 @@ class CommentsApiController extends Api
         }
     }
 
-    //Mejorar
     public function deleteComment($url_params){
         $comment_id = $url_params[":id"];
         $this->model->deleteComment($comment_id);
-        return $this->json_response("Comentario Borrados Existosamente", 200);
+        return $this->json_response("Comentario Borrado Existosamente", 200);
     }
     
     public function productExist($product_id){
-
         $product = $this->productModel->getProduct($product_id);
         return $product;
     }

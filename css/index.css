@@ -14,7 +14,8 @@
 .nav:hover {
     background-color:"red";
 }
-.category-button, .category-indicator, .admin-button, .confirm-button,.comments-button{
+
+.category-button, .category-indicator, .admin-button, .confirm-button,.comments-button,.send-comment-button{
     text-align: center;
     background-color: #d9534f;
     width: 95%;
@@ -37,6 +38,12 @@
 .active-button{
     background-color: #d86b6b;
 }
+
+.send-comment-button{
+    width: 75%;
+    font-size: 1em;
+}
+
 .category-button:hover, .admin-button:hover, .confirm-button:hover, .comments-button:hover, .delete-comment:hover{
     cursor: pointer;
 }
