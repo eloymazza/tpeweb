@@ -19,11 +19,19 @@ class ProductView extends View
 
 
     // Funciones para administracion de productos
-
     function errorCrear($error, $name,$description, $price, $category, $discount, $categories){
       $this->assignProductForm($name,$description, $price, $category, $discount);
       $this->smarty->assign('error', $error);
       $this->smarty->assign('showAddProduct', true);
+      $this->smarty->assign('categories', $categories);
+      $this->smarty->display('admin_panel/adminPanel.tpl');
+    }
+
+
+    function errorUpdate($error, $name,$description, $price, $category, $discount, $categories){
+      $this->assignProductForm($name,$description, $price, $category, $discount);
+      $this->smarty->assign('error', $error);
+      $this->smarty->assign('showModifyProduct', true);
       $this->smarty->assign('categories', $categories);
       $this->smarty->display('admin_panel/adminPanel.tpl');
     }

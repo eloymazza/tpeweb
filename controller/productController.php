@@ -52,7 +52,7 @@
           }else{
             $rutaTempImagenes = $_FILES['imagenes']['tmp_name'];
             if($this->sonJPG($_FILES['imagenes']['type'])) {
-              $this->productModel->addProduct($name,$description, $price, $idCategory, $discount, $rutaTempImagenes);
+              $this->productModel->addProduct($name, $description, $price, $idCategory, $discount, $rutaTempImagenes);
               $this->goToEndPoint("adminPanel");
             }else{
               $categories = $this->categoriesModel->getCategories();
@@ -61,22 +61,47 @@
           }
         }
         public function deleteProduct(){
-          $idProduct = $_POST['id_producto'];
-          $this->productModel->deleteProduct($idProduct);
+          if (isset($_POST['id_producto']) && !empty($_POST['id_producto'])) {
+            $this->productModel->deleteProduct($_POST['id_producto']);
+          }
           $this->goToEndPoint("adminPanel");
         }
 
         public function updateProduct(){
-          $productID = $_POST["id_producto"];
           $name = $_POST["nombre"];
           $description = $_POST["descripcion"];
           $price = $_POST["precio"];
           $idCategory = $_POST["categoria"];
           $discount = $_POST["descuento"];
-          $this->productModel->updateProduct($name,$description, $price, $idCategory, $discount,$productID);
-          $this->goToEndPoint("adminPanel");
+          $id_producto = $_POST["id_producto"];
+
+          $rutaTempImagenes = $_FILES['imagenes']['tmp_name'];
+          if( $_FILES['imagenes']['error'][0] == UPLOAD_ERR_NO_FILE // No hubo archivos
+            || ($_FILES['imagenes']['error'][0] !== UPLOAD_ERR_NO_FILE
+            && $this->sonJPG($_FILES['imagenes']['type'])) //Hubo archivos y son JPG
+          ) {
+            $this->productModel->updateProduct($name,$description, $price, $discount, $idCategory, $id_producto, $rutaTempImagenes);
+            $this->goToEndPoint("adminPanel");
+          }else{
+            $categories = $this->categoriesModel->getCategories();
+            $this->view->errorUpdate("Las imagenes tienen que ser JPG.", $name, $description, $price, $idCategory, $discount, $categories);
+          }
+
+      }
+
+        function eliminarImagen() {
+          $this->productModel->deleteImagen($_POST['id_imagen']);
         }
+
+    /*
+    function adminProductoImagenes() {
+      if (isset($_GET['id_producto']) && !empty($_GET['id_producto'])) {
+        $this->productView->adminProductoImagenes($this->productoModel->getImagenesProducto($_GET['id_producto']));
+      }
     }
+
+*/
+  }
 
 
 ?>
