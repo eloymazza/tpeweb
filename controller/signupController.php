@@ -1,7 +1,7 @@
 <?php
 include_once('view/signupView.php');
 include_once('controller/controller.php');
-include_once('model/signupModel.php');
+include_once('model/userModel.php');
 
 class SignupController extends Controller
 {
@@ -9,38 +9,31 @@ class SignupController extends Controller
     {
         parent::__construct();
         $this->signupView = new SignupView();
-        $this->signupModel = new SignupModel();
+        $this->userModel = new UserModel();
     }
 
     public function signupPanel(){
         $this->signupView->showSignup();
     }
 
-  public function verifyUser()
+  public function register()
   {
-      $userName = $_POST['nombre'];
       $email = $_POST['email'];
       $password = $_POST['password'];
 
-      if(!empty($userName) && !empty($email) && !empty($password)){
-        $user = $this->signupModel->getUser($userName);
-        if((!empty($user)) && password_verify($password, $user[0]['password'])) {
-            session_start();
-            $_SESSION['userName'] = $userName;
-            $_SESSION['LAST_ACTIVITY'] = time();
-            $this->goToEndPoint("adminPanel");
+      if(!empty($email) && !empty($password)){
+        $user = $this->userModel->getUser($email);
+        if ($user){
+          $this->signupView->showSignup("Error el usuario ya existe");
+          return;
+        }else{
+          $hash = password_hash($password, PASSWORD_DEFAULT);
+          $this->userModel->saveUser($email, $hash);
+          $loginController = new LoginController();
+          $loginController->login($email);
         }
-        else{
-            $this->signupView->showSignup("Error, Usuario o Contraseña Incorrectos");
-        }
-      }
-  }
 
-  public function logout()
-  {
-    session_start();
-    session_destroy();
-    $this->goToEndPoint("index");
+      }
   }
 }
  ?>

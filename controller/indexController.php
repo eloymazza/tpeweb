@@ -2,6 +2,7 @@
 
     include_once("view/indexView.php");
     include_once("model/productModel.php");
+    include_once("model/userModel.php");
     include_once('controller/SetupController.php');
 
     class IndexController extends Controller
@@ -20,9 +21,11 @@
         {
           if($this->setup->setupOk()){
             session_start();
-            $userName = isset($_SESSION["userName"]) ? $_SESSION["userName"] : " ";
+            $email = isset($_SESSION["email"]) ? $_SESSION["email"] : " ";
+            $userModel = new UserModel();
+            $user = $userModel->getUser($email);
             //Reformar para que pida user Type
-            $this->view->index($userName);
+            $this->view->index($user);
           }
         }
 
