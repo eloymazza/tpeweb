@@ -48,7 +48,7 @@ INSERT INTO `categoria` (`id_categoria`, `nombre`) VALUES
 
 CREATE TABLE `comentario` (
   `id_comentario` int(255) NOT NULL,
-  `contenido` text NOT NULL,
+  `comentario` text NOT NULL,
   `id_producto` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -134,6 +134,9 @@ INSERT INTO `usuario` (`id_usuario`, `email`, `password`, `admin`) VALUES
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id_categoria`);
 
+
+ALTER TABLE `comentario`
+  ADD PRIMARY KEY (`id_comentario`);
 --
 -- Indices de la tabla `producto`
 --
@@ -163,6 +166,9 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `categoria`
   MODIFY `id_categoria` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+  ALTER TABLE `comentario`
+  MODIFY `id_comentario` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --

@@ -64,7 +64,6 @@
 .product-box{
     border: 1px solid black;
     width: 30%;
-    max-height: 200px;
 }
 .admin-panel{
     text-align: center;
