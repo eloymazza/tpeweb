@@ -64,12 +64,6 @@ CREATE TABLE `imagen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-
-INSERT INTO `imagen` (`id_imagen`, `ruta`, `id_producto`) VALUES
-(2, 'imagenes/5a078f99396fa.jpg', 9),
-(10, 'imagenes/5a0a3739165ac.jpg', 13),
-(11, 'imagenes/5a0a37391663c.jpg', 13);
-
 -- --------------------------------------------------------
 
 --
