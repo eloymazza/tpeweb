@@ -53,7 +53,31 @@ CREATE TABLE `comentario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
+--
+-- Table structure for table `imagen`
+--
 
+CREATE TABLE `imagen` (
+  `id_imagen` int(11) NOT NULL,
+  `ruta` varchar(256) NOT NULL,
+  `id_producto` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+INSERT INTO `imagen` (`id_imagen`, `ruta`, `id_producto`) VALUES
+(2, 'imagenes/5a078f99396fa.jpg', 9),
+(10, 'imagenes/5a0a3739165ac.jpg', 13),
+(11, 'imagenes/5a0a37391663c.jpg', 13);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `producto`
+--
+
+--
+-- Du
 --
 -- Estructura de tabla para la tabla `producto`
 --
@@ -88,18 +112,19 @@ INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `precio`, `descu
 
 CREATE TABLE `usuario` (
   `id_usuario` int(5) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `password` varchar(150) NOT NULL
+  `email` varchar(250) NOT NULL,
+  `password` varchar(150) NOT NULL,
+  `admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
+INSERT INTO `usuario` (`id_usuario`, `email`, `password`, `admin`) VALUES
+(2, 'admin@admin.com', '$2y$10$9Yx.e52k1dOiPtwOsGzl6uEWXovv.ptb6N9fPq2CCScKM7yYGAUAu', 0),
+(4, 'mariana@gmail.com', '$2y$10$2zmTHV58VBOyMEOH/rwVquNc.LGtGRBOLESUmKa.p/eZOXXRARMnO', 1),
+(5, 'usuario@test.com', '$2y$10$PvL4BL45e9F7z.P1U1x9DeW/RkpQpMb9FRFvYXNBAliADA8rezGYu', 0);
 
-INSERT INTO `usuario` (`id_usuario`, `nombre`, `password`) VALUES
-(2, 'admin', '$2y$10$9Yx.e52k1dOiPtwOsGzl6uEWXovv.ptb6N9fPq2CCScKM7yYGAUAu');
-
---
 -- Índices para tablas volcadas
 --
 
@@ -116,11 +141,18 @@ ALTER TABLE `producto`
   ADD PRIMARY KEY (`id_producto`),
   ADD KEY `id_categoria` (`id_categoria`);
 
+  ALTER TABLE `imagen`
+  ADD PRIMARY KEY (`id_imagen`),
+  ADD KEY `id_producto` (`id_producto`),
+  ADD KEY `id_producto_2` (`id_producto`);
+
 --
 -- Indices de la tabla `usuario`
 --
+--
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`);
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD UNIQUE KEY `nombre` (`email`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -137,10 +169,26 @@ ALTER TABLE `categoria`
 ALTER TABLE `producto`
   MODIFY `id_producto` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT de la tabla `usuario`
+-- AUTO_INCREMENT for table `imagen`
+ALTER TABLE `imagen`
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
+--
+-- AUTO_INCREMENT de la tabla `usuario`
 ALTER TABLE `usuario`
   MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+-- Constraints for table `imagen`
+ALTER TABLE `imagen`
+  ADD CONSTRAINT `imagen_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`);
+
+--
+-- Constraints for table `producto`
+--
+ALTER TABLE `producto`
+  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`);
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
