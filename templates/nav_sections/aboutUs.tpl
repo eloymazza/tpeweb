@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
       <div class="col-md-4">
-        <img class= "img-fluid" src="http://st.depositphotos.com/1278120/1983/i/950/depositphotos_19836753-Happy-family-at-the-supermarket-Happy-family-at-the-supermarket.jpg" alt="">
+        <img class= "img-fluid" src="imagenes/aboutUsFamily.jpg" alt="">
       </div>
         <div class="col-md-8">
             <h1> ¿Quiénes Somos? </h1>
