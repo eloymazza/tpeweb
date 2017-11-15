@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 13-10-2017 a las 02:39:28
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.23
+-- Host: localhost
+-- Generation Time: Nov 15, 2017 at 03:34 AM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `db_nueva`
+-- Database: `db_test`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categoria`
+-- Table structure for table `categoria`
 --
 
 CREATE TABLE `categoria` (
@@ -32,7 +32,7 @@ CREATE TABLE `categoria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `categoria`
+-- Dumping data for table `categoria`
 --
 
 INSERT INTO `categoria` (`id_categoria`, `nombre`) VALUES
@@ -52,7 +52,6 @@ CREATE TABLE `comentario` (
   `id_producto` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
 --
 -- Table structure for table `imagen`
 --
@@ -63,23 +62,10 @@ CREATE TABLE `imagen` (
   `id_producto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-
-INSERT INTO `imagen` (`id_imagen`, `ruta`, `id_producto`) VALUES
-(2, 'imagenes/5a078f99396fa.jpg', 9),
-(10, 'imagenes/5a0a3739165ac.jpg', 13),
-(11, 'imagenes/5a0a37391663c.jpg', 13);
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `producto`
---
-
---
--- Du
---
--- Estructura de tabla para la tabla `producto`
 --
 
 CREATE TABLE `producto` (
@@ -92,7 +78,7 @@ CREATE TABLE `producto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `producto`
+-- Dumping data for table `producto`
 --
 
 INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `precio`, `descuento`, `id_categoria`) VALUES
@@ -107,7 +93,7 @@ INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `precio`, `descu
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Table structure for table `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -118,7 +104,7 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `usuario`
+-- Dumping data for table `usuario`
 --
 INSERT INTO `usuario` (`id_usuario`, `email`, `password`, `admin`) VALUES
 (2, 'admin@admin.com', '$2y$10$9Yx.e52k1dOiPtwOsGzl6uEWXovv.ptb6N9fPq2CCScKM7yYGAUAu', 1),
@@ -129,7 +115,7 @@ INSERT INTO `usuario` (`id_usuario`, `email`, `password`, `admin`) VALUES
 --
 
 --
--- Indices de la tabla `categoria`
+-- Indexes for table `categoria`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id_categoria`);
@@ -138,19 +124,21 @@ ALTER TABLE `categoria`
 ALTER TABLE `comentario`
   ADD PRIMARY KEY (`id_comentario`);
 --
--- Indices de la tabla `producto`
+-- Indexes for table `imagen`
+--
+ALTER TABLE `imagen`
+  ADD PRIMARY KEY (`id_imagen`),
+  ADD KEY `id_producto` (`id_producto`);
+
+--
+-- Indexes for table `producto`
 --
 ALTER TABLE `producto`
   ADD PRIMARY KEY (`id_producto`),
   ADD KEY `id_categoria` (`id_categoria`);
 
-  ALTER TABLE `imagen`
-  ADD PRIMARY KEY (`id_imagen`),
-  ADD KEY `id_producto` (`id_producto`),
-  ADD KEY `id_producto_2` (`id_producto`);
-
 --
--- Indices de la tabla `usuario`
+-- Indexes for table `usuario`
 --
 --
 ALTER TABLE `usuario`
@@ -158,11 +146,11 @@ ALTER TABLE `usuario`
   ADD UNIQUE KEY `nombre` (`email`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `categoria`
+-- AUTO_INCREMENT for table `categoria`
 --
 ALTER TABLE `categoria`
   MODIFY `id_categoria` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
@@ -170,21 +158,36 @@ ALTER TABLE `categoria`
   ALTER TABLE `comentario`
   MODIFY `id_comentario` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 --
--- AUTO_INCREMENT de la tabla `producto`
+-- AUTO_INCREMENT for table `imagen`
+--
+ALTER TABLE `imagen`
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+--
+-- AUTO_INCREMENT for table `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+MODIFY `id_producto` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT for table `imagen`
-ALTER TABLE `imagen`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
---
+-- AUTO_INCREMENT for table `usuario`
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- Constraints for dumped tables
+--
 
+
+--
+-- Constraints for table `comentario`
+--
+ALTER TABLE `comentario`
+  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`);
+
+
+--
 -- Constraints for table `imagen`
+--
 ALTER TABLE `imagen`
   ADD CONSTRAINT `imagen_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`);
 
@@ -193,7 +196,6 @@ ALTER TABLE `imagen`
 --
 ALTER TABLE `producto`
   ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`);
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

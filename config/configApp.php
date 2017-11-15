@@ -33,7 +33,9 @@ class ConfigApp
 
       'addProduct' => "productController#addProduct",
       'modifyProduct' => "productController#updateProduct",
-      'deleteProduct' => "productController#deleteProduct"
+      'deleteProduct' => "productController#deleteProduct",
+
+      'deleteImage' => "productController#deleteImage"
     ];
 
 }

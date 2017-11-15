@@ -12,6 +12,9 @@
                 <h2>
                     {$product["nombre"]}
                 </h2>
+                {foreach from=$product['fotos'] item=foto}
+                  <img src="{$foto['ruta']}" class="img-fluid" alt="Imagen del producto {$product['nombre']}">
+                {/foreach}
                 <div>
                     <span>{$product["descripcion"]}</span>
                 </div>

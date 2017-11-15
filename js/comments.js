@@ -7,7 +7,7 @@ function getComments(productID){
         renderComments(comments,productID);
     }).fail(function(result){
         renderNoComments(productID);
-    });       
+    });
 }
 
 function postComment(data, productID){
@@ -44,27 +44,28 @@ function deleteComment(comment){
 function renderComments(commentsArray,productID){
     let commentsRendered = Mustache.render(commentsTemplate, {'commentsArray':commentsArray, "productID": productID});
     $("#commentsContainer_"+productID).html(commentsRendered);
-    activateCommentEvents();
+    activateCommentEvents(productID);
 }
 
 
 function renderNoComments(productID){
     let noCommentsRender = Mustache.render(commentsTemplate, {'noComment':true,'noCommentproductID': productID});
     $("#commentsContainer_"+productID).html(noCommentsRender);
-    activateCommentEvents();
+    activateCommentEvents(productID);
 }
 
-function activateCommentEvents(){
-    $(".js-delete-comment").click(function(){
+function activateCommentEvents(productID){
+    $("#commentsContainer_"+productID).find(".js-delete-comment").click(function(){
         deleteComment(this);
     });
-    $(".js-newComment-form").on("submit",function(event){
+
+    $("#commentsContainer_"+productID).find(".js-newComment-form").on("submit",function(event){
         event.preventDefault();
+        //let productID = this.id.split("_")[1];
         let data = {
-            comentario : $("#comment-content").val()
+            comentario : $("#commentsContainer_"+productID).find("#comment-content").val()
         };
-        let productID = this.id.split("_")[1];
         postComment(data, productID);
     });
-    
+
 }

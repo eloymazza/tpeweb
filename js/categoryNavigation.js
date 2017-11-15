@@ -1,4 +1,4 @@
-let commentsHanlersON=false;
+
 function activateButtonHanlers(){
     $(".js-catalogue-buttons").click(function(){
         renderCatalogue(this.id,this.innerText);
@@ -8,7 +8,6 @@ function activateButtonHanlers(){
         renderOffers(this.id,this.innerText);
         buttonActiveEffects(this);
     });
-    let commentsHanlersON=false;
     activateCommentButtons();
 }
 
@@ -46,6 +45,6 @@ function buttonActiveEffects(buttonActive){
 }
 function activateCommentButtons(){
     $(".js-comments-button").click(function(){
-        getComments(this.id.split("_")[1]);  
+        getComments(this.id.split("_")[1]);
     });
 }
