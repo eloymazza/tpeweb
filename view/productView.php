@@ -44,6 +44,10 @@ class ProductView extends View
       $this->smarty->assign('descuento',$discount);
     }
 
+    function deleteImage(){
+      $this->smarty->display('admin_panel/modifyProduct.tpl');
+    }
+
 }
 
 ?>

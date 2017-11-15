@@ -29,10 +29,11 @@
           {/foreach}
         </select>
       </div>
-      <label for="imagen">Imagen</label>
-      <input type="file" id="imagenes" name="imagenes[]" multiple>
+      <div class="form-group">
+        <label for="imagen">Imagen</label>
+        <input type="file" id="imagenes" name="imagenes[]" multiple>
+      </div>
       <div id="update-productos-lista-imagenes">
-
       </div>
     </div>
     <button type="submit"class="btn confirm-button mt-2">Confirmar</button>

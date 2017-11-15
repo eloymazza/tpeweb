@@ -89,18 +89,13 @@
 
       }
 
-        function eliminarImagen() {
-          $this->productModel->deleteImagen($_POST['id_imagen']);
+      function deleteImage() {
+        if(isset($_GET['id_imagen'])){
+          $this->productModel->deleteImagen($_GET['id_imagen']);
+          $this->goToEndPoint("adminPanel");
         }
-
-    /*
-    function adminProductoImagenes() {
-      if (isset($_GET['id_producto']) && !empty($_GET['id_producto'])) {
-        $this->productView->adminProductoImagenes($this->productoModel->getImagenesProducto($_GET['id_producto']));
       }
-    }
 
-*/
   }
 
 

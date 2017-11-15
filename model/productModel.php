@@ -70,7 +70,7 @@ class ProductModel extends Model
       $rutas = [];
       foreach ($imagenes as $imagen) {
         if(isset($imagen) && !empty($imagen)){
-          $destino_final = 'imagenes/' . uniqid() . '.jpg';
+          $destino_final = 'imagenes/uploaded/' . uniqid() . '.jpg';
           move_uploaded_file($imagen, $destino_final);
           $rutas[]=$destino_final;
         }
