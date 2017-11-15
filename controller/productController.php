@@ -74,28 +74,23 @@
 
         public function updateProduct(){
           $name = $_POST["nombre"];
-          if(!$this->nameInUse($name)){
-            $description = $_POST["descripcion"];
-            $price = $_POST["precio"];
-            $idCategory = $_POST["categoria"];
-            $discount = $_POST["descuento"];
-            $id_producto = $_POST["id_producto"];
+          $description = $_POST["descripcion"];
+          $price = $_POST["precio"];
+          $idCategory = $_POST["categoria"];
+          $discount = $_POST["descuento"];
+          $id_producto = $_POST["id_producto"];
 
-            $rutaTempImagenes = $_FILES['imagenes']['tmp_name'];
-            if( $_FILES['imagenes']['error'][0] == UPLOAD_ERR_NO_FILE // No hubo archivos
-              || ($_FILES['imagenes']['error'][0] !== UPLOAD_ERR_NO_FILE
-              && $this->sonJPG($_FILES['imagenes']['type'])) //Hubo archivos y son JPG
-            ) {
-              $this->productModel->updateProduct($name,$description, $price, $discount, $idCategory, $id_producto, $rutaTempImagenes);
-              $this->goToEndPoint("adminPanel");
-            }else{
-              $categories = $this->categoriesModel->getCategories();
-              $this->view->errorUpdate("Las imagenes tienen que ser JPG.", $name, $description, $price, $idCategory, $discount, $categories);
-            }
-          }
-          else{
-            echo "El nombre del producto ya esta en uso”;
-          }
+          $rutaTempImagenes = $_FILES['imagenes']['tmp_name'];
+          if( $_FILES['imagenes']['error'][0] == UPLOAD_ERR_NO_FILE // No hubo archivos
+            || ($_FILES['imagenes']['error'][0] !== UPLOAD_ERR_NO_FILE
+            && $this->sonJPG($_FILES['imagenes']['type'])) //Hubo archivos y son JPG
+          ) {
+            $this->productModel->updateProduct($name,$description, $price, $discount, $idCategory, $id_producto, $rutaTempImagenes);
+            $this->goToEndPoint("adminPanel");
+          }else{
+            $categories = $this->categoriesModel->getCategories();
+            $this->view->errorUpdate("Las imagenes tienen que ser JPG.", $name, $description, $price, $idCategory, $discount, $categories);
+          }    
       }
 
       function deleteImage() {
