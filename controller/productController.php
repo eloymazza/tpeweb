@@ -39,27 +39,32 @@
         }
 
         public function addProduct(){
-
           $name = $_POST["nombre"];
-          $description = $_POST["descripcion"];
-          $price = $_POST["precio"];
-          $idCategory = $_POST["categoria"];
-          $discount = $_POST["descuento"];
-          if($_FILES['imagenes']['error'][0] == UPLOAD_ERR_NO_FILE)
-          {
-            $categories = $this->categoriesModel->getCategories();
-            $this->view->errorCrear("El archivo es requerido", $name, $description, $price, $idCategory, $discount, $categories);
-          }else{
-            $rutaTempImagenes = $_FILES['imagenes']['tmp_name'];
-            if($this->sonJPG($_FILES['imagenes']['type'])) {
-              $this->productModel->addProduct($name, $description, $price, $idCategory, $discount, $rutaTempImagenes);
-              $this->goToEndPoint("adminPanel");
-            }else{
+          if(!$this->nameInUse($name)){
+            $description = $_POST["descripcion"];
+            $price = $_POST["precio"];
+            $idCategory = $_POST["categoria"];
+            $discount = $_POST["descuento"];
+            if($_FILES['imagenes']['error'][0] == UPLOAD_ERR_NO_FILE)
+            {
               $categories = $this->categoriesModel->getCategories();
-              $this->view->errorCrear("Las imagenes tienen que ser JPG.", $name, $description, $price, $idCategory, $discount, $categories);
+              $this->view->errorCrear("El archivo es requerido", $name, $description, $price, $idCategory, $discount, $categories);
+            }else{
+              $rutaTempImagenes = $_FILES['imagenes']['tmp_name'];
+              if($this->sonJPG($_FILES['imagenes']['type'])) {
+                $this->productModel->addProduct($name, $description, $price, $idCategory, $discount, $rutaTempImagenes);
+                $this->goToEndPoint("adminPanel");
+              }else{
+                $categories = $this->categoriesModel->getCategories();
+                $this->view->errorCrear("Las imagenes tienen que ser JPG.", $name, $description, $price, $idCategory, $discount, $categories);
+              }
             }
           }
+          else{
+            echo "Error, el nombre del producto ya existe";
+          }
         }
+
         public function deleteProduct(){
           if (isset($_POST['id_producto']) && !empty($_POST['id_producto'])) {
             $this->productModel->deleteProduct($_POST['id_producto']);
@@ -69,24 +74,28 @@
 
         public function updateProduct(){
           $name = $_POST["nombre"];
-          $description = $_POST["descripcion"];
-          $price = $_POST["precio"];
-          $idCategory = $_POST["categoria"];
-          $discount = $_POST["descuento"];
-          $id_producto = $_POST["id_producto"];
+          if(!$this->nameInUse($name)){
+            $description = $_POST["descripcion"];
+            $price = $_POST["precio"];
+            $idCategory = $_POST["categoria"];
+            $discount = $_POST["descuento"];
+            $id_producto = $_POST["id_producto"];
 
-          $rutaTempImagenes = $_FILES['imagenes']['tmp_name'];
-          if( $_FILES['imagenes']['error'][0] == UPLOAD_ERR_NO_FILE // No hubo archivos
-            || ($_FILES['imagenes']['error'][0] !== UPLOAD_ERR_NO_FILE
-            && $this->sonJPG($_FILES['imagenes']['type'])) //Hubo archivos y son JPG
-          ) {
-            $this->productModel->updateProduct($name,$description, $price, $discount, $idCategory, $id_producto, $rutaTempImagenes);
-            $this->goToEndPoint("adminPanel");
-          }else{
-            $categories = $this->categoriesModel->getCategories();
-            $this->view->errorUpdate("Las imagenes tienen que ser JPG.", $name, $description, $price, $idCategory, $discount, $categories);
+            $rutaTempImagenes = $_FILES['imagenes']['tmp_name'];
+            if( $_FILES['imagenes']['error'][0] == UPLOAD_ERR_NO_FILE // No hubo archivos
+              || ($_FILES['imagenes']['error'][0] !== UPLOAD_ERR_NO_FILE
+              && $this->sonJPG($_FILES['imagenes']['type'])) //Hubo archivos y son JPG
+            ) {
+              $this->productModel->updateProduct($name,$description, $price, $discount, $idCategory, $id_producto, $rutaTempImagenes);
+              $this->goToEndPoint("adminPanel");
+            }else{
+              $categories = $this->categoriesModel->getCategories();
+              $this->view->errorUpdate("Las imagenes tienen que ser JPG.", $name, $description, $price, $idCategory, $discount, $categories);
+            }
           }
-
+          else{
+            echo "El nombre del producto ya esta en uso”;
+          }
       }
 
       function deleteImage() {
@@ -95,6 +104,17 @@
           $this->goToEndPoint("adminPanel");
         }
       }
+
+      public function nameInUse($productName){
+        $category = $this->productModel->getProductByName($productName);
+        if($category == ''){
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 
   }
 

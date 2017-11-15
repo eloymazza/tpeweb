@@ -19,3 +19,4 @@ class OffersModel extends Model
    
 }
 
+?>

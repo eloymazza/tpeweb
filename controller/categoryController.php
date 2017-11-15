@@ -14,13 +14,25 @@ class CategoryController extends Controller
     }   
 
     public function addCategory(){
-        $this->categoriesModel->addCategory($_POST["nombre"]);
-        $this->goToEndPoint("adminPanel");
+        $categoryName = $_POST["nombre"];
+        if(!$this->nameInUse($categoryName)){           
+            $this->categoriesModel->addCategory($categoryName);
+            $this->goToEndPoint("adminPanel");
+        }
+        else{
+            echo "Nombre de Categoria en uso";
+        }
     }
 
     public function updateCategory(){
-        $this->categoriesModel->updateCategory($_POST["nuevo-nombre"], $_POST["nombre-categoria"]);
-        $this->goToEndPoint("adminPanel");
+        $newName = $_POST["nuevo-nombre"];
+        if(!$this->nameInUse($newName)){
+            $this->categoriesModel->updateCategory($newName, $_POST["nombre-categoria"]);
+            $this->goToEndPoint("adminPanel");
+        }
+        else{
+            echo "Nombre de Categoria en uso";
+        }
     }
 
     public function deleteCategory(){
@@ -28,6 +40,17 @@ class CategoryController extends Controller
         $this->productModel->updateProductsCategory($idCategoria);
         $this->categoriesModel->deleteCategory($idCategoria);
         $this->goToEndPoint("adminPanel");
+    }
+
+    public function nameInUse($categoryName){
+        $category = $this->categoriesModel->getCategoryByName($categoryName);
+        if($category == ''){
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 }
 ?>

@@ -6,21 +6,21 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 product-shower ">
+            <div class="col-md-12 product-shower">
             {foreach from=$products item=product}
             <div class="product-box m-3 p-2 ">
                 <h2>
                     {$product["nombre"]}
                 </h2>
                 <div>
-                    <p>{$product["descripcion"]}</p>
+                    <span>{$product["descripcion"]}</span>
                 </div>
                 <div>
                     <span>Precio: {$product["precio"]}$</span>
                 </div>
-                    <div>
-                        <span>Descuento: {$product["descuento"]}%</span>
-                    </div>
+                <div>
+                    <span>Descuento: {$product["descuento"]}%</span>
+                </div>
                 <div>
                   {assign var="productCategoryID" value=$product["id_categoria"]}
                   {foreach from=$categories item=category}
@@ -29,6 +29,7 @@
                       {/if}
                   {/foreach}
                 </div>
+                
             </div>
             {/foreach}
             </div>

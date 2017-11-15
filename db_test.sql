@@ -40,7 +40,17 @@ INSERT INTO `categoria` (`id_categoria`, `nombre`) VALUES
 (2, 'Bebidas'),
 (3, 'Limpiezza');
 
--- --------------------------------------------------------
+-- ---------------------------------------------------------- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentario`
+--
+
+CREATE TABLE `comentario` (
+  `id_comentario` int(255) NOT NULL,
+  `comentario` text NOT NULL,
+  `id_producto` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Table structure for table `imagen`
@@ -88,19 +98,20 @@ INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `precio`, `descu
 
 CREATE TABLE `usuario` (
   `id_usuario` int(5) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `password` varchar(150) NOT NULL
+  `email` varchar(250) NOT NULL,
+  `password` varchar(150) NOT NULL,
+  `admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `usuario`
 --
+INSERT INTO `usuario` (`id_usuario`, `email`, `password`, `admin`) VALUES
+(2, 'admin@admin.com', '$2y$10$9Yx.e52k1dOiPtwOsGzl6uEWXovv.ptb6N9fPq2CCScKM7yYGAUAu', 1),
+(4, 'mariana@gmail.com', '$2y$10$2zmTHV58VBOyMEOH/rwVquNc.LGtGRBOLESUmKa.p/eZOXXRARMnO', 1),
+(5, 'usuario@test.com', '$2y$10$PvL4BL45e9F7z.P1U1x9DeW/RkpQpMb9FRFvYXNBAliADA8rezGYu', 0);
 
-INSERT INTO `usuario` (`id_usuario`, `nombre`, `password`) VALUES
-(1, 'admin', '$2y$10$9Yx.e52k1dOiPtwOsGzl6uEWXovv.ptb6N9fPq2CCScKM7yYGAUAu');
-
---
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
@@ -109,6 +120,9 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `password`) VALUES
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id_categoria`);
 
+
+ALTER TABLE `comentario`
+  ADD PRIMARY KEY (`id_comentario`);
 --
 -- Indexes for table `imagen`
 --
@@ -126,8 +140,10 @@ ALTER TABLE `producto`
 --
 -- Indexes for table `usuario`
 --
+--
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`);
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD UNIQUE KEY `nombre` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -138,6 +154,9 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `categoria`
   MODIFY `id_categoria` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+  ALTER TABLE `comentario`
+  MODIFY `id_comentario` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 --
 -- AUTO_INCREMENT for table `imagen`
 --
@@ -151,11 +170,20 @@ MODIFY `id_producto` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
+-- AUTO_INCREMENT de la tabla `usuario`
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
 --
+
+
+--
+-- Constraints for table `comentario`
+--
+ALTER TABLE `comentario`
+  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`);
+
 
 --
 -- Constraints for table `imagen`

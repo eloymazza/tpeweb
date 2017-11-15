@@ -18,6 +18,13 @@ class ProductModel extends Model
       return $this->fillSingleProductWithImages($producto);
     }
 
+    function getProductByName($productName){
+      $sentencia = $this->db->prepare( "select * from producto where nombre = ?");
+      $sentencia->execute([$productName]);
+      return $sentencia->fetch(PDO::FETCH_ASSOC);
+    }
+
+
     function getProductsByCategory($categoryID){
         $sentencia = $this->db->prepare( "select * from producto where id_categoria=?");
         $sentencia->execute([$categoryID]);
@@ -64,8 +71,9 @@ class ProductModel extends Model
       foreach($rutas as $ruta){
         $sentencia_imagenes->execute([$id_producto, $ruta]);
       }
-
+      return $this->getProduct($id_producto);
     }
+
     private function subirImagenes($imagenes){
       $rutas = [];
       foreach ($imagenes as $imagen) {

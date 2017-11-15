@@ -1,0 +1,20 @@
+
+{{#commentsArray}}
+    {{comentario}}
+    <span class="delete-comment js-delete-comment" id="comment_{{id_comentario}}" title="commentForProduct_{{id_producto}}">Borrar</span>
+{{/commentsArray}}
+{{#productID}}
+    <form class="js-newComment-form" id="newCommentForProduct_{{productID}}">
+        <input type="text" name="comentario" id="comment-content" placeholder="Agregar Comentario">
+        <button type="submit" class="send-comment-button">Comentar</button> 
+    </form>
+{{/productID}}
+{{#noComment}}
+    <span> Este producto no tiene Comentarios <span> 
+    {{#noCommentproductID}}
+    <form class="js-newComment-form" id="newCommentForProduct_{{noCommentproductID}}">
+        <input type="text" name="comentario" id="comment-content" placeholder="Agregar Comentario">
+        <button type="submit" class="send-comment-button">Comentar</button> 
+    </form>
+    {{/noCommentproductID}}
+{{/noComment}} 

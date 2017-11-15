@@ -1,16 +1,19 @@
-
+let commentsHanlersON=false;
 function activateButtonHanlers(){
-    $(".js-category-buttons").on("click", function(){
-        renderCategory(this.id,this.innerText);
+    $(".js-catalogue-buttons").click(function(){
+        renderCatalogue(this.id,this.innerText);
         buttonActiveEffects(this);
     });
-    $(".js-offers-buttons").on("click", function(){
+    $(".js-offers-buttons").click(function(){
         renderOffers(this.id,this.innerText);
         buttonActiveEffects(this);
     });
+    let commentsHanlersON=false;
+    activateCommentButtons();
 }
 
-function renderCategory(categoryId,nombreCategoria){
+
+function renderCatalogue(categoryId,nombreCategoria){
     let url;
     if(categoryId == "allProductsButton"){
         url="allProducts/0/Todos";
@@ -20,6 +23,7 @@ function renderCategory(categoryId,nombreCategoria){
     }
     $.post(url,"", function(response){
         $(".js-catalogue").html(response);
+        activateCommentButtons();
     });
 }
 
@@ -39,4 +43,9 @@ function renderOffers(categoryId,nombreCategoria){
 function buttonActiveEffects(buttonActive){
     $(".category-button").removeClass("active-button");
     $(buttonActive).addClass("active-button");
+}
+function activateCommentButtons(){
+    $(".js-comments-button").click(function(){
+        getComments(this.id.split("_")[1]);  
+    });
 }
