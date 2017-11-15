@@ -16,18 +16,15 @@ class LoginController extends Controller
         $this->loginView->showLogin();
     }
 
-  public function verifyUser()
-  {
-      $userName = $_POST['nombre'];
-      $password = $_POST['password'];
+    public function verifyUser()
+    {
+        $email = $_POST['email']; 
+        $password = $_POST['password'];
 
-      if(!empty($userName) && !empty($password)){
-        $user = $this->loginModel->getUser($userName);
+        if(!empty($email) && !empty($password)){
+            $user = $this->loginModel->getUser($email);
         if((!empty($user)) && password_verify($password, $user[0]['password'])) {
-            session_start();
-            $_SESSION['userName'] = $userName;
-            $_SESSION['LAST_ACTIVITY'] = time();
-            $this->goToEndPoint("adminPanel");
+            $this->login($email,$user);
         }
         else{
             $this->loginView->showLogin("Error, Usuario o Contraseña Incorrectos");
@@ -35,11 +32,25 @@ class LoginController extends Controller
       }
   }
 
-  public function logout()
-  {
-    session_start();
-    session_destroy();
-    $this->goToEndPoint("index");
-  }
+    public function login($email,$user)
+    {
+        session_start();
+        $_SESSION['email'] = $email;
+        $_SESSION['LAST_ACTIVITY'] = time();
+        if($user[0]['admin']=="1"){
+           $this->goToEndPoint("adminPanel");
+        }
+        else{
+            $this->goToEndPoint("index");
+        }
+        
+    }
+
+    public function logout()
+    {
+        session_start();
+        session_destroy();
+        $this->goToEndPoint("index");
+    }
 }
  ?>

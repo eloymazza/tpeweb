@@ -8,12 +8,15 @@
             <img class="img-fluid" src="http://coucoujolie.com/wp-content/uploads/2016/01/Fruit-banner-800x208.png" alt="">
           </div>
           <div class="col-md-2 push-1">     
-            {if $userName == "admin"}
-                <a class="btn btn-secondary" href="logout">Logout</a>    
-                <a class="btn btn-secondary" href="adminPanel">Admin Panel</a>    
-            {else}       
-                <a class="btn btn-secondary" href="login">Login</a>            
-            {/if}           
+            {if $user}
+                <a class="btn btn-secondary" href="logout">Logout</a>
+                {if $user['admin'] }  
+                    <a class="btn btn-secondary" href="adminPanel">Admin Panel</a>
+                {/if}                     
+            {else}
+                <a class="btn btn-secondary" href="login">Login</a>
+                <a class="btn btn-secondary" href="signup">Sign Up</a>
+            {/if}
           </div>
       </div>
     </div>

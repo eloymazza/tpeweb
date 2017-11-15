@@ -7,6 +7,7 @@ include_once("controller/productController.php");
 include_once("controller/offersController.php");
 include_once("controller/loginController.php");
 include_once("controller/categoryController.php");
+include_once("controller/signupController.php");
 
 
 function parseURL($url)

@@ -8,8 +8,8 @@ class IndexView extends View
         parent::__construct();
     }
 
-    function index($userName){
-        $this->smarty->assign('userName',$userName);
+    function index($user){
+        $this->smarty->assign('user',$user);
         $this->smarty->display('index.tpl');
     }
 

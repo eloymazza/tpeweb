@@ -14,8 +14,8 @@
           <div class="col-md-4 push-4 mt-2">
             <form action="verifyUser" method="post">
               <div class="form-group">
-                <label for="usuario">Usuario</label>
-                <input type="text" class="form-control" name="nombre" placeholder="roberto.petrusa" required>
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" placeholder="roberto.petrusa@gmail.com" required>
               </div>
               <div class="form-group">
                 <label for="password">Password</label>

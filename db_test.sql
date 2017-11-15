@@ -121,7 +121,7 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 INSERT INTO `usuario` (`id_usuario`, `email`, `password`, `admin`) VALUES
-(2, 'admin@admin.com', '$2y$10$9Yx.e52k1dOiPtwOsGzl6uEWXovv.ptb6N9fPq2CCScKM7yYGAUAu', 0),
+(2, 'admin@admin.com', '$2y$10$9Yx.e52k1dOiPtwOsGzl6uEWXovv.ptb6N9fPq2CCScKM7yYGAUAu', 1),
 (4, 'mariana@gmail.com', '$2y$10$2zmTHV58VBOyMEOH/rwVquNc.LGtGRBOLESUmKa.p/eZOXXRARMnO', 1),
 (5, 'usuario@test.com', '$2y$10$PvL4BL45e9F7z.P1U1x9DeW/RkpQpMb9FRFvYXNBAliADA8rezGYu', 0);
 
