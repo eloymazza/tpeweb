@@ -20,7 +20,7 @@
 
     public function register()
     {
-      if(! validaCaptcha()){
+      if(! $this->validaCaptcha()){
         $this->signupView->showSignup("Validar Captcha");
       }else{
         $email = $_POST['email'];
@@ -44,6 +44,9 @@
 
     public function validaCaptcha()
     {
+      if(!isset($_POST['g-recaptcha-response'])){
+        $this->goToEndPoint("signup");
+      }
       $post_data = http_build_query(
           array(
               'secret' => '6LdC5DgUAAAAALSGN4Jj47MUp2C3nrsMfG0DIHgY',
