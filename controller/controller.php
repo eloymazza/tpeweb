@@ -18,7 +18,7 @@ class Controller
     }
 
     public function goToEndPoint($endpoint = ""){
-        header('Location: http://'.$_SERVER['SERVER_NAME']. dirname($_SERVER['PHP_SELF']).'/'.$endpoint);
+        header('Location: http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT']. dirname($_SERVER['PHP_SELF']).'/'.$endpoint);
     }
 }
 
