@@ -1,33 +1,35 @@
-{include file="common_elements/head.tpl"}
+ {include file="common_elements/head.tpl"}
  <body>
-   <header>
+     <header>
+         <div class="container">
+             <div class="row">
+                 <div class="col-md-4 push-4 mt-2">
+                     <h1>Crea tu Cuenta Personal</h1>
+                  </div>
+              </div>
+         </div>
+     </header>
      <div class="container">
-       <div class="row">
-         <div class="col-md-4 push-4 mt-2">
-           <h1>Crea tu Cuenta Personal</h1>
+         <div class="row">
+             <div class="col-md-4 push-4 mt-2">
+                 <form action="register" method="post">
+                     <div class="form-group">
+                         <label for="email">Direccion de Email</label>
+                         <input type="email" class="form-control" name="email" placeholder="roberto.petrusa@gmail.com" required>
+                     </div>
+                     <div class="form-group">
+                         <label for="password">Password</label>
+                         <input type="password" class="form-control" name="password" placeholder="Password" required>
+                     </div>
+                     {if !empty($error) }
+                     <div class="alert alert-danger" role="alert">{$error}</div>
+                     {/if}
+                     <div class="g-recaptcha" data-sitekey="6LdC5DgUAAAAAFKkK0yIMpFDmyxUodqxQQyLTKsv"></div>
+                     <button type="submit" class="btn btn-primary">Registrarse</button>
+                     <a href="index" class="btn btn-default">Go Back</a>
+                   </form>
+             </div>
          </div>
-       </div>
      </div>
-   </header>
-      <div class="container">
-          <div class="row">
-            <div class="col-md-4 push-4 mt-2">
-              <form action="register" method="post">
-                <div class="form-group">
-                  <label for="email">Direccion de Email</label>
-                  <input type="email" class="form-control" name="email" placeholder="roberto.petrusa@gmail.com" required>
-                </div>
-                <div class="form-group">
-                 <label for="password">Password</label>
-                 <input type="password" class="form-control" name ="password" placeholder="Password" required>
-               </div>
-               {if !empty($error) }
-                 <div class="alert alert-danger" role="alert">{$error}</div>
-               {/if}
-               <button type="submit" class="btn btn-primary">Registrarse</button>
-               <a href="index" class="btn btn-default">Go Back</a>
-             </form>
-           </div>
-         </div>
-     </body>
- </div>
+     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+ </body>
