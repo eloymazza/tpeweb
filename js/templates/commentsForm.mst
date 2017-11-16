@@ -1,0 +1,6 @@
+{{#productID}}
+    <form class="js-newComment-form" id="newCommentForProduct_{{productID}}">
+        <input type="text" name="comentario" id="comment-content" placeholder="Agregar Comentario">
+        <button type="submit" class="send-comment-button">Comentar</button>
+    </form>
+{{/productID}}

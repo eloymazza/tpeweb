@@ -2,15 +2,21 @@
 let commentsTemplate;
 $.ajax({url: 'js/templates/comments.mst'}).done(template => commentsTemplate = template);
 
+let commentsFormTemplate;
+$.ajax({url: 'js/templates/commentsForm.mst'}).done(template => commentsFormTemplate = template);
+
+
 function getComments(productID){
     $.get("api/comments/"+ productID, function(comments){
+      console.log("encontro comentarios");
         renderComments(comments,productID);
     }).fail(function(result){
+      console.log("NO encontro comentarios");
         renderNoComments(productID);
     });
 }
 
-function postComment(data, productID){
+function postComment(data, productID, input){
     console.log(productID);
     $.ajax({
         method: "POST",
@@ -20,6 +26,7 @@ function postComment(data, productID){
      .done(function(response) {
          console.log(response);
         getComments(productID);
+        input.val('');
     })
     .fail(function(err) {
         console.log("error" + err);
@@ -42,31 +49,40 @@ function deleteComment(comment){
 }
 
 function renderComments(commentsArray,productID){
-    let params = {'commentsArray':commentsArray, "productID": productID,"isAdmin":isAdmin,"isUser":isUser};
-    let commentsRendered = Mustache.render(commentsTemplate, params);
+    let commentsRendered = Mustache.render(commentsTemplate, {'commentsArray':commentsArray, 'isAdmin':isAdmin});
     $("#commentsContainer_"+productID).html(commentsRendered);
     activateCommentEvents(productID);
 }
 
 
 function renderNoComments(productID){
-    let params = {'noComment':true,'noCommentproductID': productID,"isUser":isUser};
-    let noCommentsRender = Mustache.render(commentsTemplate, params);
-    $("#commentsContainer_"+productID).html(noCommentsRender);
+    let noCommentsRendered = Mustache.render(commentsTemplate, {'noComment':true});
+    $("#commentsContainer_"+productID).html(noCommentsRendered);
     activateCommentEvents(productID);
+}
+
+function renderCommentsForm(productID){
+    if(isUser){
+        let commentsFormRendered = Mustache.render(commentsFormTemplate, {'productID': productID});
+        $("#commentsFormContainer_"+productID).html(commentsFormRendered);
+        activateCommentFormEvents(productID);
+    }
 }
 
 function activateCommentEvents(productID){
     $("#commentsContainer_"+productID).find(".js-delete-comment").click(function(){
         deleteComment(this);
     });
+}
 
-    $("#commentsContainer_"+productID).find(".js-newComment-form").on("submit",function(event){
-        event.preventDefault();
-        let data = {
-            comentario : $("#commentsContainer_"+productID).find("#comment-content").val()
-        };
-        postComment(data, productID);
-    });
-
+function activateCommentFormEvents(productID){
+  let form = $("#commentsFormContainer_"+productID);
+  form.find(".js-newComment-form").on("submit",function(event){
+      event.preventDefault();
+      let input = form.find("#comment-content");
+      let data = {
+          comentario : input.val()
+      };
+      postComment(data, productID, input);
+  });
 }

@@ -17,9 +17,8 @@ function renderSection(name){
     });
 }
 function configAcces(){
-
-
     // codigo para obtener si es admin o user
+    console.log("entro");
     $.ajax({
         method: "GET",
         url: "userPermissions"

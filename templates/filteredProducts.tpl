@@ -34,12 +34,12 @@
                         {/if}
                     {/foreach}
                 </div>
-                <div class="col-md-8 pl-0">
-                    <button class="comments-button js-comments-button" id="commentsButton_{$product['id_producto']}">Comentarios</button>
-                    <div class="row">
-                        <div class="col-md-8 pl-0" id="commentsContainer_{$product['id_producto']}">
-                        </div>
-                    </div>
+
+                <button class="comments-button js-comments-button" id="commentsButton_{$product['id_producto']}">Comentarios</button>
+
+                <div id="commentsContainer_{$product['id_producto']}">
+                </div>
+                <div id="commentsFormContainer_{$product['id_producto']}">
                 </div>
             </div>
             {/foreach}
