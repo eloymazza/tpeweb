@@ -27,6 +27,8 @@ class ConfigApp
 
       'adminPanel' => 'AdminController#adminPanel',
 
+      'userPermissions' => 'UserController#getUserPermission',
+
       'addCategory' => "categoryController#addCategory",
       'modifyCategory' => "categoryController#updateCategory",
       'deleteCategory' => "categoryController#deleteCategory",

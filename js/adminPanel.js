@@ -3,7 +3,6 @@ $(document).ready(function(){
 
     $(this).next().toggleClass("hide");
     adminButtonActiveEffects(this);
-
   });
 
   function adminButtonActiveEffects(buttonActive){

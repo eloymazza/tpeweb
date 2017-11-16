@@ -42,14 +42,16 @@ function deleteComment(comment){
 }
 
 function renderComments(commentsArray,productID){
-    let commentsRendered = Mustache.render(commentsTemplate, {'commentsArray':commentsArray, "productID": productID});
+    let params = {'commentsArray':commentsArray, "productID": productID,"isAdmin":isAdmin,"isUser":isUser};
+    let commentsRendered = Mustache.render(commentsTemplate, params);
     $("#commentsContainer_"+productID).html(commentsRendered);
     activateCommentEvents(productID);
 }
 
 
 function renderNoComments(productID){
-    let noCommentsRender = Mustache.render(commentsTemplate, {'noComment':true,'noCommentproductID': productID});
+    let params = {'noComment':true,'noCommentproductID': productID,"isUser":isUser};
+    let noCommentsRender = Mustache.render(commentsTemplate, params);
     $("#commentsContainer_"+productID).html(noCommentsRender);
     activateCommentEvents(productID);
 }
@@ -61,7 +63,6 @@ function activateCommentEvents(productID){
 
     $("#commentsContainer_"+productID).find(".js-newComment-form").on("submit",function(event){
         event.preventDefault();
-        //let productID = this.id.split("_")[1];
         let data = {
             comentario : $("#commentsContainer_"+productID).find("#comment-content").val()
         };

@@ -1,5 +1,5 @@
 
-function activateButtonHanlers(){
+function activateButtonHandlers(){
     $(".js-catalogue-buttons").click(function(){
         renderCatalogue(this.id,this.innerText);
         buttonActiveEffects(this);
@@ -48,3 +48,6 @@ function activateCommentButtons(){
         getComments(this.id.split("_")[1]);
     });
 }
+
+
+
