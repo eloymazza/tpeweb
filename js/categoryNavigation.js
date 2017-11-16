@@ -45,6 +45,13 @@ function buttonActiveEffects(buttonActive){
 }
 function activateCommentButtons(){
     $(".js-comments-button").click(function(){
-        getComments(this.id.split("_")[1]);
+        let productID = this.id.split("_")[1];
+        getComments(productID);
+        //MOSTRAR FORM
+        renderCommentsForm(productID);
+        //INICIAR INTERVALO
+        setInterval(function(){
+          getComments(productID);
+        }, 2000);
     });
 }
