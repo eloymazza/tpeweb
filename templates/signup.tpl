@@ -26,7 +26,9 @@
                     <div class="alert alert-danger" role="alert">{$error}</div>
                     {/if}
                     <div class="g-recaptcha" data-sitekey="6LdC5DgUAAAAAFKkK0yIMpFDmyxUodqxQQyLTKsv"></div>
+                    <br>
                     <button type="submit" class="btn btn-primary">Registrarse</button>
+
                     <a href="index" class="btn btn-default">Go Back</a>
                   </form>
             </div>
