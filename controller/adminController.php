@@ -24,12 +24,14 @@ class AdminController extends Controller
         $this->adminView = new AdminView();
         $this->categoriesModel = new CategoriesModel();
         $this->productModel = new ProductModel();
+        $this->userModel = new UserModel();
     }
 
     public function adminPanel(){
+        $users = $this->userModel->getUsers();
         $categories = $this->categoriesModel->getCategories();
         $products = $this->productModel->getProducts();
-        $this->adminView->showAdminPanel($categories, $products);
+        $this->adminView->showAdminPanel($categories, $products, $users);
     }
 
 }

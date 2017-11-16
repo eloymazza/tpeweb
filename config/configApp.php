@@ -27,17 +27,20 @@ class ConfigApp
 
       'adminPanel' => 'AdminController#adminPanel',
 
-      'userPermissions' => 'UserController#getUserPermission',
-
       'addCategory' => "categoryController#addCategory",
       'modifyCategory' => "categoryController#updateCategory",
       'deleteCategory' => "categoryController#deleteCategory",
-
+      
       'addProduct' => "productController#addProduct",
       'modifyProduct' => "productController#updateProduct",
       'deleteProduct' => "productController#deleteProduct",
+      
+      'deleteImage' => "productController#deleteImage",
 
-      'deleteImage' => "productController#deleteImage"
+      'userPermissions' => 'UserController#getUserPermission',
+      'deleteUser' => 'UserController#deleteUser',
+      'modifyPermissions' => 'UserController#modifyUserPermissions'
+
     ];
 
 }

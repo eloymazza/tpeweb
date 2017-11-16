@@ -9,6 +9,7 @@ class UserController extends Controller
     {
         parent::__construct();
         $this->loginModel = new LoginModel();
+        $this->userModel = new UserModel();
     }
 
     function getUserPermission(){
@@ -25,8 +26,27 @@ class UserController extends Controller
         }   
         header("Content-Type: application/json");
         return json_encode(array('admin'=> $isAdmin, 'user'=> $isUser));
-
     }
+
+    function deleteUser(){
+        if (isset($_POST['id_usuario']) && !empty($_POST['id_usuario'])) {
+            $this->userModel->deleteUser($_POST['id_usuario']);
+          }
+          $this->goToEndPoint("adminPanel");
+    }
+
+    function modifyUserPermissions(){
+        print_r($_POST);
+        $user_id = $_POST['id_usuario'];
+        if(isset($_POST['admin'])){
+            $this->userModel->changePermissions($user_id, "1");
+        }
+        else{
+            $this->userModel->changePermissions($user_id, "0");
+        }
+        $this->goToEndPoint("adminPanel");
+    }
+
 }
 
  ?>
