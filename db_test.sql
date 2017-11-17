@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2017 at 08:13 PM
+-- Generation Time: Nov 17, 2017 at 04:28 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -50,17 +50,21 @@ INSERT INTO `categoria` (`id_categoria`, `nombre`) VALUES
 CREATE TABLE `comentario` (
   `id_comentario` int(100) NOT NULL,
   `comentario` text NOT NULL,
-  `id_producto` int(255) NOT NULL
+  `id_producto` int(255) NOT NULL,
+  `puntaje` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `comentario`
 --
 
-INSERT INTO `comentario` (`id_comentario`, `comentario`, `id_producto`) VALUES
-(1, 'Riquisimooooooo!!! 5 puntos', 7),
-(2, 'Muy amarga! 4 of 5', 5),
-(4, 'Riquisimassss!!! 5 of 5', 8);
+INSERT INTO `comentario` (`id_comentario`, `comentario`, `id_producto`, `puntaje`) VALUES
+(1, 'Riquisimooooooo!!! 5 puntos', 7, 0),
+(2, 'Muy amarga! 4 of 5', 5, 0),
+(4, 'Riquisimassss!!! 5 of 5', 8, 0),
+(6, 'Es ciertoooo! barre re bien! super recomendado', 3, 0),
+(8, 'no me gustan! fea puntuacion!', 2, 0),
+(9, 'pura pinta', 9, 0);
 
 -- --------------------------------------------------------
 
@@ -83,12 +87,12 @@ INSERT INTO `imagen` (`id_imagen`, `ruta`, `id_producto`) VALUES
 (3, 'images/uploaded/5a0c4493c2d30.jpg', 5),
 (4, 'images/uploaded/5a0c44dfa19f0.jpg', 2),
 (5, 'images/uploaded/5a0c44eda4100.jpg', 2),
-(6, 'images/uploaded/5a0c4529e86c0.jpg', 3),
 (7, 'images/uploaded/5a0c45a831128.jpg', 7),
 (8, 'images/uploaded/5a0c476c1b580.jpg', 8),
 (9, 'images/uploaded/5a0c4782c5828.jpg', 9),
 (10, 'images/uploaded/5a0c479ee5010.jpg', 10),
-(11, 'images/uploaded/5a0c479ee57e0.jpg', 10);
+(11, 'images/uploaded/5a0c479ee57e0.jpg', 10),
+(12, 'images/uploaded/5a0dad9cf3d90.jpg', 3);
 
 -- --------------------------------------------------------
 
@@ -140,7 +144,8 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id_usuario`, `email`, `password`, `admin`) VALUES
 (2, 'admin@admin.com', '$2y$10$9Yx.e52k1dOiPtwOsGzl6uEWXovv.ptb6N9fPq2CCScKM7yYGAUAu', 1),
 (4, 'mariana@gmail.com', '$2y$10$2zmTHV58VBOyMEOH/rwVquNc.LGtGRBOLESUmKa.p/eZOXXRARMnO', 1),
-(5, 'usuario@test.com', '$2y$10$PvL4BL45e9F7z.P1U1x9DeW/RkpQpMb9FRFvYXNBAliADA8rezGYu', 0);
+(5, 'usuario@test.com', '$2y$10$PvL4BL45e9F7z.P1U1x9DeW/RkpQpMb9FRFvYXNBAliADA8rezGYu', 0),
+(6, 'usuario1@gmail.com', '$2y$10$1gHi3XtlOP6ifdLAWVjb0u2/xDFWMZ/D17m5NMc9mu7QklBK.K2yy', 0);
 
 --
 -- Indexes for dumped tables
@@ -193,12 +198,12 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT for table `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comentario` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_comentario` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `imagen`
 --
 ALTER TABLE `imagen`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `producto`
 --
@@ -208,7 +213,7 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables
 --

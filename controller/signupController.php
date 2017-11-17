@@ -25,6 +25,8 @@ class SignupController extends Controller
     else{
       $email = $_POST['email'];
       $password = $_POST['password'];
+      $user = $_POST['password'];
+
       if(!empty($email) && !empty($password)){
         $user = $this->userModel->getUser($email);
         if ($user){
@@ -34,8 +36,9 @@ class SignupController extends Controller
         else {
             $hash = password_hash($password, PASSWORD_DEFAULT);
             $this->userModel->saveUser($email, $hash);
+            $user = $this->userModel->getUser($email);
             $loginController = new LoginController();
-            $loginController->login($email);
+            $loginController->login($email, $user);
         }
       }
     }
