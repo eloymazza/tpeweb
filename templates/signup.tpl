@@ -24,12 +24,10 @@
                      {if !empty($error) }
                      <div class="alert alert-danger" role="alert">{$error}</div>
                      {/if}
-                     <div class="g-recaptcha" data-sitekey="6LdC5DgUAAAAAFKkK0yIMpFDmyxUodqxQQyLTKsv"></div>
                      <button type="submit" class="btn btn-primary">Registrarse</button>
                      <a href="index" class="btn btn-default">Go Back</a>
                    </form>
              </div>
          </div>
      </div>
-     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
  </body>

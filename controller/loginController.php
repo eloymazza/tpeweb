@@ -20,7 +20,6 @@ class LoginController extends Controller
     {
         $email = $_POST['email']; 
         $password = $_POST['password'];
-
         if(!empty($email) && !empty($password)){
             $user = $this->loginModel->getUser($email);
         if((!empty($user)) && password_verify($password, $user[0]['password'])) {

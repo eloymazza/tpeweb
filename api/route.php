@@ -14,8 +14,8 @@
 
   include_once 'config/Router.php';
   include_once '../model/model.php';
-  include_once 'controller/ProductsApiController.php';
-  include_once 'controller/CategoriesApiController.php';
+  include_once 'controller/productsApiController.php';
+  include_once 'controller/categoriesApiController.php';
   include_once 'controller/commentsApiController.php';
   $router = new Router();
   //url, verb, controller, method
@@ -44,5 +44,4 @@
     $url_params = $array[2];
     echo (new $controller())->$metodo($url_params);
   }
-
 ?>

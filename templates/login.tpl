@@ -19,7 +19,7 @@
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" name ="password" placeholder="Password" required>
+                <input type="password" class="form-control" name="password" placeholder="Password" required>
               </div>
               {if !empty($error) }
                 <div class="alert alert-danger" role="alert">{$error}</div>

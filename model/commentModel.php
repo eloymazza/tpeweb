@@ -24,9 +24,9 @@
             $sentencia->execute([$id_comment]);
         }
 
-        function addComment($comment,$id_product, $puntaje){
-            $sentencia = $this->db->prepare('INSERT INTO comentario(comentario,id_producto, puntaje) VALUES(?,?,?)');
-            $sentencia->execute([$comment, $id_product, $puntaje]);
+        function addComment($comment,$id_product){
+            $sentencia = $this->db->prepare('INSERT INTO comentario(comentario,id_producto) VALUES(?,?)');
+            $sentencia->execute([$comment, $id_product,]);
             $id = $this->db->lastInsertId();
             return $this->getComment($id);
         }

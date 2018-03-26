@@ -52,6 +52,6 @@ function activateCommentButtons(){
                 //INICIAR INTERVALO
         setInterval(function(){
             getComments(productID);
-        }, 2000);
+        }, 2000000);
     });
 }

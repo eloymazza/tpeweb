@@ -43,7 +43,7 @@ class SignupController extends Controller
       }
     }
   }
-
+  /*
   public function validaCaptcha(){
         if(!isset($_POST['g-recaptcha-response'])){
               $this->goToEndPoint("signup");
@@ -70,6 +70,6 @@ class SignupController extends Controller
         else
           return true;
         }
+        */
      }
-
 ?>

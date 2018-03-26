@@ -17,14 +17,13 @@ function getComments(productID){
 }
 
 function postComment(data, productID, input){
-    console.log(productID);
     $.ajax({
         method: "POST",
         url: "api/comments/"+productID,
         data: JSON.stringify(data)
      })
      .done(function(response) {
-         console.log(response);
+        console.log(response);
         getComments(productID);
         input.val('');
     })
