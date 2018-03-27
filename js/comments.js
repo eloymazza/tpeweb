@@ -77,10 +77,13 @@ function activateCommentEvents(productID){
 function activateCommentFormEvents(productID){
   let form = $("#commentsFormContainer_"+productID);
   form.find(".js-newComment-form").on("submit",function(event){
+      $('.modal').modal();
       event.preventDefault();
       let input = form.find("#comment-content");
+      let puntaje = form.find(".js-puntuacion").val();
       let data = {
-          comentario : input.val()
+          comentario : input.val(),
+          puntaje : puntaje
       };
       postComment(data, productID, input);
   });

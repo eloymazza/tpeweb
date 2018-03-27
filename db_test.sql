@@ -51,7 +51,7 @@ CREATE TABLE `comentario` (
   `id_comentario` int(100) NOT NULL,
   `comentario` text NOT NULL,
   `id_producto` int(255) NOT NULL,
-  `puntaje` int(11) NOT NULL
+  `puntaje` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

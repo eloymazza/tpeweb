@@ -17,8 +17,9 @@ class CommentsApiController extends Api
     public function createComment($url_params = []){
         $body = json_decode($this->raw_data);
         $comment = $body->comentario;
+        $score = $body->puntaje;
         $product_id = $url_params[":id"];
-        $commentResponse = $this->model->addComment($comment, $product_id);
+        $commentResponse = $this->model->addComment($comment, $score, $product_id);
         return $this->json_response($commentResponse, 200);
     }
 
@@ -59,6 +60,43 @@ class CommentsApiController extends Api
         $product = $this->productModel->getProduct($product_id);
         return $product;
     }
+
+
+    public function validateCaptcha(){
+        if(!isset($_POST['g-recaptcha-response'])){
+            $this->goToEndPoint("signup");
+        }
+        $post_data = http_build_query(
+            array(
+                'secret' => '6LdC5DgUAAAAALSGN4Jj47MUp2C3nrsMfG0DIHgY',
+                'response' => $_POST['g-recaptcha-response'],
+                'remoteip' => $_SERVER['REMOTE_ADDR']
+                )
+            );
+        $opts = array('http' =>
+            array(
+                'method'  => 'POST',
+                'header'  => 'Content-type: application/x-www-form-urlencoded',
+                'content' => $post_data
+              )
+            );
+        $context  = stream_context_create($opts);
+        $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
+        $result = json_decode($response);
+        if (!$result->success){
+            return false;
+        }
+        else
+        {
+          return true;
+        }
+    }
+    /*
+
+    if(!$this->validaCaptcha()){
+        $this->signupView->showSignup("Validar Captcha");
+    }
+        */
 }
 
 ?>

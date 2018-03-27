@@ -24,10 +24,10 @@
             $sentencia->execute([$id_comment]);
         }
 
-        function addComment($comment,$id_product){
-            $sentencia = $this->db->prepare('INSERT INTO comentario(comentario,id_producto) VALUES(?,?)');
-            $sentencia->execute([$comment, $id_product,]);
-            $id = $this->db->lastInsertId();
+        function addComment($comment,$score,$id_product){
+            $sentencia = $this->db->prepare('INSERT INTO comentario(comentario,puntaje,id_producto) VALUES(?,?,?)');
+            $sentencia->execute([$comment,$score,$id_product]);
+            $id=$this->db->lastInsertId();
             return $this->getComment($id);
         }
     }

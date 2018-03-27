@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      {{comentario}}
+      {{comentario}} Puntaje:{{puntaje}}
     </div>
     <div class="col">
       {{#isAdmin}}
@@ -12,7 +12,6 @@
   </div>
 </div>
 {{/commentsArray}}
-
 {{#noComment}}
     <span> Este producto no tiene Comentarios <span>
 {{/noComment}}

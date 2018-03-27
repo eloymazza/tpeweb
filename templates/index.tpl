@@ -8,6 +8,7 @@
             </div>
         </article>
         {include file="common_elements/footer.tpl"}
+        {include file="common_elements/modal.tpl"}
     </body>
     {include file="dependences.tpl"}
 </html>
