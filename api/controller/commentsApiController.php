@@ -15,12 +15,17 @@ class CommentsApiController extends Api
     }
 
     public function createComment($url_params = []){
-        $body = json_decode($this->raw_data);
-        $comment = $body->comentario;
-        $score = $body->puntaje;
-        $product_id = $url_params[":id"];
-        $commentResponse = $this->model->addComment($comment, $score, $product_id);
-        return $this->json_response($commentResponse, 200);
+        if(!$this->validateCaptcha()){
+            $body = json_decode($this->raw_data);
+            $comment = $body->comentario;
+            $score = $body->puntaje;
+            $product_id = $url_params[":id"];
+            $commentResponse = $this->model->addComment($comment, $score, $product_id);
+            return $this->json_response($commentResponse, 200);
+        }
+        else{
+            return $this->json_response("Acceso denegado", 403);
+        }
     }
 
 
@@ -64,7 +69,7 @@ class CommentsApiController extends Api
 
     public function validateCaptcha(){
         if(!isset($_POST['g-recaptcha-response'])){
-            $this->goToEndPoint("signup");
+            return false;
         }
         $post_data = http_build_query(
             array(
@@ -91,12 +96,7 @@ class CommentsApiController extends Api
           return true;
         }
     }
-    /*
 
-    if(!$this->validaCaptcha()){
-        $this->signupView->showSignup("Validar Captcha");
-    }
-        */
 }
 
 ?>
