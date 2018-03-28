@@ -15,7 +15,7 @@
                  <form action="register" method="post">
                      <div class="form-group">
                          <label for="email">Direccion de Email</label>
-                         <input type="email" class="form-control" name="email" placeholder="roberto.petrusa@gmail.com" required>
+                         <input type="email" class="form-control" name="email" placeholder="Ingrese email" required>
                      </div>
                      <div class="form-group">
                          <label for="password">Password</label>

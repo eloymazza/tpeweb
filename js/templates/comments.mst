@@ -4,14 +4,17 @@
     <div class="col">
       {{comentario}} Puntaje:{{puntaje}}
     </div>
+      {{#canDelete}}
     <div class="col">
-      {{#isAdmin}}
       <span class="delete-comment js-delete-comment" id="comment_{{id_comentario}}" title="commentForProduct_{{id_producto}}">Borrar</span>
-      {{/isAdmin}}
     </div>
+      {{/canDelete}}
   </div>
 </div>
 {{/commentsArray}}
 {{#noComment}}
-    <span> Este producto no tiene Comentarios <span>
+    <span> Este producto no tiene Comentarios </span>
 {{/noComment}}
+{{#canComment}}
+<button type"button" class="send-comment-button" id="comment_button_{{productID}}">Comentar</button>
+{{/canComment}}

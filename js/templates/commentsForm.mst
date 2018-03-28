@@ -1,8 +1,8 @@
-<div class="modal fade" tabindex="-1" role="dialog">
+<div class="modal fade" id="modal_{{productID}}" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 class="modal-title">Crear Comentario</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -10,19 +10,19 @@
       <div class="modal-body">
         <p>Llena el Captcha para comentar</p>
         {{#productID}}
-    <form class="js-newComment-form" id="newCommentForProduct_{{productID}}">
-        <input type="text" name="comentario" id="comment-content" placeholder="Agregar Comentario">
-        <select class="js-puntuacion">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-    <button type="submit" class="send-comment-button">Comentar</button>
-    </form>
-{{/productID}}
-        <div class="g-recaptcha" data-sitekey="6LdC5DgUAAAAAFKkK0yIMpFDmyxUodqxQQyLTKsv"></div>
+        <form class="js-newComment-form" id="newCommentForProduct_{{productID}}">
+            <input type="text" name="comentario" id="comment-content" placeholder="Agregar Comentario" disabled>
+            <select class="js-puntuacion">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        <button type="submit" class="send-comment-button" disabled>Comentar</button>
+        </form>
+        {{/productID}}
+        <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6LdC5DgUAAAAAFKkK0yIMpFDmyxUodqxQQyLTKsv"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

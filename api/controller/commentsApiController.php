@@ -66,8 +66,7 @@ class CommentsApiController extends Api
         return $product;
     }
 
-
-    public function validateCaptcha(){
+    public function validateCaptcha($url_params){
         if(!isset($_POST['g-recaptcha-response'])){
             return false;
         }
@@ -88,15 +87,14 @@ class CommentsApiController extends Api
         $context  = stream_context_create($opts);
         $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
         $result = json_decode($response);
-        if (!$result->success){
-            return false;
+        if ($result->success){
+            return true;
         }
         else
         {
-          return true;
+          return false;
         }
     }
-
 }
 
 ?>

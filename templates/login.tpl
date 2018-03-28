@@ -15,7 +15,7 @@
             <form action="verifyUser" method="post">
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" placeholder="roberto.petrusa@gmail.com" required>
+                <input type="email" class="form-control" name="email" placeholder="ingrese Email" required>
               </div>
               <div class="form-group">
                 <label for="password">Password</label>

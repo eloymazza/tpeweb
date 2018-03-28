@@ -10,9 +10,11 @@ function getComments(productID){
     $.get("api/comments/"+ productID, function(comments){
       console.log("encontro comentarios");
         renderComments(comments,productID);
+        activateCommentEvents(productID);
     }).fail(function(result){
-      console.log("NO encontro comentarios");
+        console.log("NO encontro comentarios");
         renderNoComments(productID);
+        activateCommentEvents(productID);
     });
 }
 
@@ -48,37 +50,40 @@ function deleteComment(comment){
 }
 
 function renderComments(commentsArray,productID){
-    let commentsRendered = Mustache.render(commentsTemplate, {'commentsArray':commentsArray, 'isAdmin':isAdmin});
+    let commentsRendered = Mustache.render(commentsTemplate, {'commentsArray':commentsArray, 'canDelete':isAdmin, 'canComment': (isAdmin || isUser),'productID': productID});
     $("#commentsContainer_"+productID).html(commentsRendered);
-    activateCommentEvents(productID);
 }
 
 
 function renderNoComments(productID){
-    let noCommentsRendered = Mustache.render(commentsTemplate, {'noComment':true});
+    let noCommentsRendered = Mustache.render(commentsTemplate, {'noComment':true, 'canComment': (isAdmin || isUser),'productID':productID});
     $("#commentsContainer_"+productID).html(noCommentsRendered);
-    activateCommentEvents(productID);
 }
 
 function renderCommentsForm(productID){
     if(isUser){
-        let commentsFormRendered = Mustache.render(commentsFormTemplate, {'productID': productID});
+        let commentsFormRendered = Mustache.render(commentsFormTemplate, {'productID': productID,'isAdmin':isAdmin, 'isUser':isUser});
         $("#commentsFormContainer_"+productID).html(commentsFormRendered);
         activateCommentFormEvents(productID);
     }
 }
 
 function activateCommentEvents(productID){
-    $("#commentsContainer_"+productID).find(".js-delete-comment").click(function(){
+    let commentsContainer = $("#commentsContainer_"+productID);
+    commentsContainer.find(".js-delete-comment").click(function(){
         deleteComment(this);
+    });
+    commentsContainer.find("#comment_button_"+productID).click(function(){
+        $('#modal_'+productID).modal();
     });
 }
 
 function activateCommentFormEvents(productID){
     let form = $("#commentsFormContainer_"+productID);
     
-    $('.modal').modal();
+    
   /*
+  
   form.find(".js-newComment-form").on("submit",function(event){
       event.preventDefault();
       let input = form.find("#comment-content");

@@ -47,11 +47,11 @@ function activateCommentButtons(){
     $(".js-comments-button").click(function(){
         let productID = this.id.split("_")[1];
         getComments(productID);
-                //MOSTRAR FORM
         renderCommentsForm(productID);
-                //INICIAR INTERVALO
         setInterval(function(){
             getComments(productID);
         }, 2000000);
     });
 }
+
+// renderCommentsForm(productID);
