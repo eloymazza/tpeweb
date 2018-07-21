@@ -50,7 +50,7 @@ function activateCommentButtons(){
         renderCommentsForm(productID);
         setInterval(function(){
             getComments(productID);
-        }, 2000000);
+        }, 20000);
     });
 }
 

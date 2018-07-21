@@ -9,20 +9,18 @@
       </div>
       <div class="modal-body">
         <p>Llena el Captcha para comentar</p>
-        {{#productID}}
-        <form class="js-newComment-form" id="newCommentForProduct_{{productID}}">
-            <input type="text" name="comentario" id="comment-content" placeholder="Agregar Comentario" disabled>
-            <select class="js-puntuacion">
+        <form id="js-newComment-form_{{productID}}">
+            <input type="text" name="comentario"  id="comment-content-{{productID}}" placeholder="Agregar Comentario">
+            <select class="js-puntuacion" name="puntuacion">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-        <button type="submit" class="send-comment-button" disabled>Comentar</button>
+        <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6LcHk08UAAAAABwVd0ZXrFy8-REqt0jA1m3W3K6K"></div>
+        <button type="submit" class="send-comment-button">Comentar</button>
         </form>
-        {{/productID}}
-        <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6LdC5DgUAAAAAFKkK0yIMpFDmyxUodqxQQyLTKsv"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -30,4 +28,4 @@
     </div>
   </div>
 </div>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>

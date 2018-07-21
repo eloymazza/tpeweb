@@ -14,8 +14,8 @@ function renderSection(name){
         activateButtonHandlers();
     });
 }
+
 function configAcces(){
-    // codigo para obtener si es admin o user
     $.ajax({
         method: "GET",
         url: "userPermissions"

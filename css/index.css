@@ -65,21 +65,13 @@
     border: 1px solid black;
     width: 30%;
 }
-.admin-panel{
-    text-align: center;
-    background-color: #d9534f;
-    color:white;
-    font-size: 21px;
-    -webkit-text-stroke-color: black;
-    -webkit-text-stroke-width: 1px;
-    font-weight: bolder;
-    border:3px solid black;
-}
+
 
 .admin-button{
     border: 1px solid black;
     padding: 0.5em;
 }
+
 .borders{
   border:3px solid black;
 }
@@ -246,6 +238,10 @@
     color: #fff;
 }
 
+.text-align {
+    display: flex;
+    justify-content: start;
+}
 
 /************************************************************
 *************************Footer******************************

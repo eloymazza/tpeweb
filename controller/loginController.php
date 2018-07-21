@@ -16,8 +16,7 @@ class LoginController extends Controller
         $this->loginView->showLogin();
     }
 
-    public function verifyUser()
-    {
+    public function verifyUser(){
         $email = $_POST['email']; 
         $password = $_POST['password'];
         if(!empty($email) && !empty($password)){
@@ -29,7 +28,7 @@ class LoginController extends Controller
             $this->loginView->showLogin("Error, Usuario o Contraseña Incorrectos");
         }
       }
-  }
+    }
 
     public function login($email,$user)
     {

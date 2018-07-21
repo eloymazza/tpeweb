@@ -6,6 +6,7 @@ let commentsFormTemplate;
 $.ajax({url: 'js/templates/commentsForm.mst'}).done(template => commentsFormTemplate = template);
 
 
+
 function getComments(productID){
     $.get("api/comments/"+ productID, function(comments){
       console.log("encontro comentarios");
@@ -18,19 +19,19 @@ function getComments(productID){
     });
 }
 
-function postComment(data, productID, input){
+function postComment(data, productID,form){
     $.ajax({
         method: "POST",
         url: "api/comments/"+productID,
-        data: JSON.stringify(data)
+        data: data
      })
      .done(function(response) {
+         grecaptcha.reset();
         console.log(response);
         getComments(productID);
-        input.val('');
     })
     .fail(function(err) {
-        console.log("error" + err);
+        alert(err.responseText);
     });
 }
 
@@ -60,13 +61,6 @@ function renderNoComments(productID){
     $("#commentsContainer_"+productID).html(noCommentsRendered);
 }
 
-function renderCommentsForm(productID){
-    if(isUser){
-        let commentsFormRendered = Mustache.render(commentsFormTemplate, {'productID': productID,'isAdmin':isAdmin, 'isUser':isUser});
-        $("#commentsFormContainer_"+productID).html(commentsFormRendered);
-        activateCommentFormEvents(productID);
-    }
-}
 
 function activateCommentEvents(productID){
     let commentsContainer = $("#commentsContainer_"+productID);
@@ -78,10 +72,23 @@ function activateCommentEvents(productID){
     });
 }
 
+function renderCommentsForm(productID){
+    if(isAdmin || isUser){
+        let commentsFormRendered = Mustache.render(commentsFormTemplate, {'productID': productID,'isAdmin':isAdmin, 'isUser':isUser});
+        $("#commentsFormContainer_"+productID).html(commentsFormRendered);
+        activateCommentFormEvents(productID);
+    }
+}
+
 function activateCommentFormEvents(productID){
-    let form = $("#commentsFormContainer_"+productID);
-    
-    
+    let form = $("#js-newComment-form_"+productID);
+    form.on("submit",function(event){
+        event.preventDefault();
+        let data = $(this).serialize();
+        console.log(data);
+        postComment(data,productID,form);
+        $('#comment-content-'+productID).val('');
+    });
   /*
   
   form.find(".js-newComment-form").on("submit",function(event){
@@ -95,4 +102,8 @@ function activateCommentFormEvents(productID){
         postComment(data, productID, input);
     });
     */
+    
 }
+
+
+

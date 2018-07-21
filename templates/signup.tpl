@@ -26,7 +26,7 @@
                      {/if}
                      <button type="submit" class="btn btn-primary">Registrarse</button>
                      <a href="index" class="btn btn-default">Go Back</a>
-                   </form>
+                </form>
              </div>
          </div>
      </div>

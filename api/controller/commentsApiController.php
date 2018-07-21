@@ -15,7 +15,20 @@ class CommentsApiController extends Api
     }
 
     public function createComment($url_params = []){
-        if(!$this->validateCaptcha()){
+        
+
+        if($this->validateCaptcha()){   
+            $product_id = $url_params[":id"];
+            $comment =  $_POST['comentario'];
+            $score = $_POST['puntuacion'];
+            $commentResponse = $this->model->addComment($comment, $score, $product_id);
+            return $this->json_response($commentResponse, 200);
+        }
+        else{
+            return $this->json_response("Captcha no validado", 403);
+        }
+        /*
+        if($this->validateCaptcha()){
             $body = json_decode($this->raw_data);
             $comment = $body->comentario;
             $score = $body->puntaje;
@@ -24,8 +37,9 @@ class CommentsApiController extends Api
             return $this->json_response($commentResponse, 200);
         }
         else{
-            return $this->json_response("Acceso denegado", 403);
+            return $this->json_response("Captcha no validado", 403);
         }
+        */
     }
 
 
@@ -66,34 +80,34 @@ class CommentsApiController extends Api
         return $product;
     }
 
-    public function validateCaptcha($url_params){
+    public function validateCaptcha(){
         if(!isset($_POST['g-recaptcha-response'])){
             return false;
         }
         $post_data = http_build_query(
             array(
-                'secret' => '6LdC5DgUAAAAALSGN4Jj47MUp2C3nrsMfG0DIHgY',
+                'secret' => '6LcHk08UAAAAAKLoNxvexSU7-yK1FMmATwKSD_qh',
                 'response' => $_POST['g-recaptcha-response'],
                 'remoteip' => $_SERVER['REMOTE_ADDR']
                 )
             );
-        $opts = array('http' =>
+            $opts = array('http' =>
             array(
                 'method'  => 'POST',
                 'header'  => 'Content-type: application/x-www-form-urlencoded',
                 'content' => $post_data
-              )
+                )
             );
-        $context  = stream_context_create($opts);
-        $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
-        $result = json_decode($response);
-        if ($result->success){
-            return true;
-        }
-        else
-        {
-          return false;
-        }
+            $context= stream_context_create($opts);
+            $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
+            $result = json_decode($response);
+            if ($result->success){
+                return true;
+            }
+            else
+            {
+                return false;
+            }
     }
 }
 

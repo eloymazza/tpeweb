@@ -84,7 +84,7 @@
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 				<div class="design">
-					 <a href="#">Mariana Mezzanotte </a> |  <a target="_blank" href="http://www.webenlance.com">Eloy Mazza</a>
+					 <a href="#">Author</a> |  <a target="_blank" href="http://www.webenlance.com">Eloy Mazza</a>
 				</div>
 			</div>
 		</div>
