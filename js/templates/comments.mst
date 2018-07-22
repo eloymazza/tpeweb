@@ -16,5 +16,5 @@
     <span> Este producto no tiene Comentarios </span>
 {{/noComment}}
 {{#canComment}}
-<button type"button" class="send-comment-button" id="comment_button_{{productID}}">Comentar</button>
+<button type="button" class="send-comment-button" id="comment_button_{{productID}}">Comentar</button>
 {{/canComment}}

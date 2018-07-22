@@ -5,6 +5,23 @@ $.ajax({url: 'js/templates/comments.mst'}).done(template => commentsTemplate = t
 let commentsFormTemplate;
 $.ajax({url: 'js/templates/commentsForm.mst'}).done(template => commentsFormTemplate = template);
 
+function activateCommentButtons(){
+    $(".js-comments-button").click(function(){
+        let productID = this.id.split("_")[1];
+        let commentsContainer = $("#commentsContainer_"+productID);
+        if(commentsContainer[0].classList.contains('hide')){
+            commentsContainer.toggleClass('hide');
+            getComments(productID);
+            renderCommentsForm(productID);
+            setInterval(function(){
+                getComments(productID);
+            }, 2000);
+        }
+        else{
+            commentsContainer.toggleClass('hide');
+        }
+    });
+}
 
 
 function getComments(productID){
@@ -12,7 +29,7 @@ function getComments(productID){
       console.log("encontro comentarios");
         renderComments(comments,productID);
         activateCommentEvents(productID);
-    }).fail(function(result){
+    }).fail(function(){
         console.log("NO encontro comentarios");
         renderNoComments(productID);
         activateCommentEvents(productID);
@@ -27,7 +44,6 @@ function postComment(data, productID,form){
      })
      .done(function(response) {
          grecaptcha.reset();
-        console.log(response);
         getComments(productID);
     })
     .fail(function(err) {
@@ -35,7 +51,7 @@ function postComment(data, productID,form){
     });
 }
 
-function deleteComment(comment){
+function deleteComment(comment){ 
     let commentID = comment.id.split("_")[1];
     let productID = comment.title.split("_")[1];
     $.ajax({
@@ -75,7 +91,7 @@ function activateCommentEvents(productID){
 function renderCommentsForm(productID){
     if(isAdmin || isUser){
         let commentsFormRendered = Mustache.render(commentsFormTemplate, {'productID': productID,'isAdmin':isAdmin, 'isUser':isUser});
-        $("#commentsFormContainer_"+productID).html(commentsFormRendered);
+        $("#modalFormContainer_"+productID).html(commentsFormRendered);
         activateCommentFormEvents(productID);
     }
 }
@@ -85,7 +101,6 @@ function activateCommentFormEvents(productID){
     form.on("submit",function(event){
         event.preventDefault();
         let data = $(this).serialize();
-        console.log(data);
         postComment(data,productID,form);
         $('#comment-content-'+productID).val('');
     });

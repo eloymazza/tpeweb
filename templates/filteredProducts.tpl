@@ -37,9 +37,9 @@
 
                 <button class="comments-button js-comments-button" id="commentsButton_{$product['id_producto']}">Comentarios</button>
 
-                <div id="commentsContainer_{$product['id_producto']}">
+                <div id="commentsContainer_{$product['id_producto']}" class='hide'>
                 </div>
-                <div id="commentsFormContainer_{$product['id_producto']}">
+                <div id="modalFormContainer_{$product['id_producto']}">
                 </div>
             </div>
             {/foreach}

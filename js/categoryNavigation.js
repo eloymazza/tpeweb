@@ -43,15 +43,5 @@ function buttonActiveEffects(buttonActive){
     $(".category-button").removeClass("active-button");
     $(buttonActive).addClass("active-button");
 }
-function activateCommentButtons(){
-    $(".js-comments-button").click(function(){
-        let productID = this.id.split("_")[1];
-        getComments(productID);
-        renderCommentsForm(productID);
-        setInterval(function(){
-            getComments(productID);
-        }, 20000);
-    });
-}
 
 // renderCommentsForm(productID);
