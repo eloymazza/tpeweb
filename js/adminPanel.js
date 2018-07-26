@@ -1,6 +1,5 @@
-$(document).ready(function(){
+$("document").ready(function(){
   $("button").on("click",function(){
-
     $(this).next().toggleClass("hide");
     adminButtonActiveEffects(this);
   });

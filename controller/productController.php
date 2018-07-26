@@ -81,10 +81,10 @@
           $id_producto = $_POST["id_producto"];
 
           $rutaTempImagenes = $_FILES['imagenes']['tmp_name'];
-          if( $_FILES['imagenes']['error'][0] == UPLOAD_ERR_NO_FILE // No hubo archivos
-            || ($_FILES['imagenes']['error'][0] !== UPLOAD_ERR_NO_FILE
+          if( ($_FILES['imagenes']['error'][0] !== UPLOAD_ERR_NO_FILE
             && $this->sonJPG($_FILES['imagenes']['type'])) //Hubo archivos y son JPG
-          ) {
+          )
+          {
             $this->productModel->updateProduct($name,$description, $price, $discount, $idCategory, $id_producto, $rutaTempImagenes);
             $this->goToEndPoint("adminPanel");
           }else{
