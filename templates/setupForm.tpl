@@ -8,7 +8,7 @@
       <form action="install.php" method="post">
         <div class="form-group">
           <label for="host">Host:</label>
-          <input type="text" class="form-control" id="host" name='host' placeholder="Host de la base de datos">
+          <input type="text" value="localhost" class="form-control" id="host" name='host' placeholder="Host de la base de datos">
         </div>
         <div class="form-group">
           <label for="database">Nombre de la Base de Datos:</label>
@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
           <label for="username">Usuario:</label>
-          <input type="text" class="form-control" id="username" name='username' placeholder="Nombre de usuario">
+          <input type="text" value="root" class="form-control" id="username" name='username' placeholder="Nombre de usuario">
         </div>
         <div class="form-group">
           <label for="password">Contraseña</label>
