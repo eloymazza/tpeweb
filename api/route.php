@@ -19,7 +19,7 @@
   include_once 'controller/commentsApiController.php';
   $router = new Router();
   //url, verb, controller, method
-  $router->AddRoute("products", "GET", "ProductsApiController", "getProducts");
+  $router->AddRoute("products", "0", "ProductsApiController", "getProducts");
   $router->AddRoute("products/:id", "GET", "ProductsApiController", "getProduct");
   $router->AddRoute("products", "POST", "ProductsApiController", "createProduct");
   $router->AddRoute("products/:id", "PUT", "ProductsApiController", "editProduct");
